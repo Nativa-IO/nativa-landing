@@ -16,7 +16,7 @@
             <div class="opening-grid">
               <div>
                 <h1>El software cambió de un día para otro.</h1>
-                <p class="lead">Más personas pueden iniciar y modificar un producto. La mesa creció; las responsabilidades no desaparecieron.</p>
+                <p class="lead">Más personas pueden iniciar y modificar un producto. Empezar requiere menos ceremonia; sostener lo construido sigue exigiendo disciplina.</p>
               </div>
               <div class="change-board">
                 <p>Quienes participan</p>
@@ -28,13 +28,20 @@
                   <div class="participant-role role-ops"><span>05</span><strong>Operación</strong></div>
                   <div class="participant-role role-expert"><span>06</span><strong>Expertos</strong></div>
                 </div>
-                <div class="same-practices">
-                  <small>Lo que sigue siendo necesario</small>
-                  <strong>Desarrollo · mantenimiento · seguridad · gobernanza</strong>
+                <div class="practice-shift">
+                  <div class="practice-column practice-obsolete">
+                    <small>Ya no es necesario</small>
+                    <s>Requerimientos al 100%</s>
+                    <s>Una etapa de diseño cerrada</s>
+                  </div>
+                  <div class="practice-column practice-current">
+                    <small>Sigue siendo necesario</small>
+                    <strong>Mantenimiento · seguridad · gobernanza · coordinación</strong>
+                  </div>
                 </div>
               </div>
             </div>
-            <p class="slide-thesis">Cambió quién construye. Las prácticas de ingeniería siguen siendo las mismas.</p>
+            <p class="slide-thesis">Podemos empezar antes. No podemos dejar de cuidar lo que construimos.</p>
           </template>
 
           <template v-else-if="currentSlide === 1">
@@ -295,10 +302,13 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .role-security span { color: #16838a; }
 .role-ops span { color: #54943d; }
 .role-expert span { color: #c47a18; }
-.same-practices { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(17,17,15,.18); }
-.same-practices small, .same-practices strong { display: block; }
-.same-practices small { margin-bottom: 8px; color: var(--muted); font-size: 11px; }
-.same-practices strong { font-family: var(--font-display); font-size: 26px; font-weight: 500; line-height: 1.1; }
+.practice-shift { display: grid; margin-top: 26px; padding-top: 20px; border-top: 1px solid rgba(17,17,15,.18); grid-template-columns: .9fr 1.1fr; gap: 24px; }
+.practice-column small { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-size: 8px; font-weight: 650; letter-spacing: .09em; text-transform: uppercase; }
+.practice-obsolete small { color: #b84848; }
+.practice-obsolete s { display: block; margin-top: 7px; color: #77736b; font-size: 11px; line-height: 1.35; text-decoration-color: #d56666; text-decoration-thickness: 1px; }
+.practice-current { padding-left: 20px; border-left: 1px solid rgba(17,17,15,.13); }
+.practice-current small { color: #24804b; }
+.practice-current strong { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 500; letter-spacing: -.015em; line-height: 1.08; }
 
 .slide-2 { background: #121210; color: #f7f5ef; }
 .slide-2 .slide-kicker { color: #bba4ff; }
