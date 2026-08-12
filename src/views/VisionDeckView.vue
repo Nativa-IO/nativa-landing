@@ -73,15 +73,20 @@
             </div>
 
             <div class="lifecycle-canvas" :class="`lifecycle-${lifecycleMode}`">
+              <p class="lifecycle-story">{{ lifecycleMode === 'linear' ? 'Una idea avanza hasta convertirse en una primera versión.' : 'Cada versión descubre nuevas necesidades y vuelve a entrar al ciclo.' }}</p>
               <div class="life-node requirements"><span>01</span><strong>Requerimientos</strong><small>Qué necesitamos</small></div>
               <i class="life-arrow arrow-one">→</i>
               <div class="life-node design"><span>02</span><strong>Diseño</strong><small>Cómo funcionará</small></div>
               <i class="life-arrow arrow-two">→</i>
-              <div class="life-node build"><span>03</span><strong>Construcción</strong><small>Primera versión</small></div>
+              <div class="life-node build"><span>03</span><strong>Construcción</strong><small>Convertirlo en código</small></div>
               <i class="life-arrow arrow-three">→</i>
-              <div class="life-node maintain"><span>04</span><strong>Mantenimiento</strong><small>Nuevas necesidades</small></div>
-              <div v-if="lifecycleMode === 'real'" class="loop-line"><span>El producto aprende y vuelve a cambiar</span></div>
-              <div v-else class="finish-line"><span>Versión 1</span><strong>“Final”</strong></div>
+              <div class="life-node maintain" :class="{ 'first-version': lifecycleMode === 'linear' }">
+                <span>04</span>
+                <strong>{{ lifecycleMode === 'linear' ? 'Primera versión' : 'Mantenimiento' }}</strong>
+                <small>{{ lifecycleMode === 'linear' ? 'Parece el final' : 'Nuevas necesidades' }}</small>
+              </div>
+              <div v-if="lifecycleMode === 'real'" class="loop-line"><span>Feedback · cambios · aprendizaje</span></div>
+              <div v-else class="finish-line"><span>La idea imaginada</span><strong>✓ Listo</strong></div>
             </div>
             <p class="slide-thesis">La versión 1 no es la versión final. Construcción y mantenimiento forman un loop que nunca deja de evolucionar.</p>
           </template>
@@ -317,20 +322,28 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .segmented-control { display: inline-flex; flex: 0 0 auto; padding: 4px; border: 1px solid rgba(17,17,15,.13); border-radius: 999px; background: #ebe7de; }
 .segmented-control button { min-height: 38px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; color: #706d65; cursor: pointer; font: inherit; font-size: 11px; font-weight: 650; }
 .segmented-control button.active { background: #11110f; color: white; box-shadow: 0 5px 16px -10px rgba(17,17,15,.7); }
-.lifecycle-canvas { position: relative; display: grid; margin-top: 76px; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 16px; align-items: center; }
-.life-node { position: relative; min-height: 152px; padding: 22px; border: 1px solid rgba(17,17,15,.14); border-radius: 18px; background: #f1eee7; transition: transform 360ms ease, background-color 360ms ease; }
-.life-node span { color: var(--purple); font-family: var(--font-mono); font-size: 9px; }
+.lifecycle-canvas { position: relative; display: grid; margin-top: 38px; padding: 68px 30px 94px; overflow: hidden; border: 1px solid rgba(17,17,15,.12); border-radius: 26px; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 14px; align-items: center; background: #fff; box-shadow: 0 28px 70px -58px rgba(17,17,15,.52); }
+.lifecycle-canvas::before { position: absolute; z-index: 0; top: 53%; right: 7%; left: 7%; height: 2px; content: ''; background: linear-gradient(90deg, #e8c56f, #df8db7, #9b7ce5, #69b8b7); opacity: .52; }
+.lifecycle-story { position: absolute; top: 20px; left: 30px; margin: 0; color: var(--muted); font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.life-node { position: relative; z-index: 2; min-height: 158px; padding: 20px; border: 1px solid rgba(17,17,15,.1); border-radius: 20px; background: #f6eedf; box-shadow: 0 18px 40px -34px rgba(17,17,15,.45); transition: transform 360ms ease, background-color 360ms ease, color 360ms ease, box-shadow 360ms ease; }
+.life-node.design { background: #f4e1eb; }
+.life-node.build { background: #e9e1fa; }
+.life-node.maintain { background: #dcefee; }
+.life-node span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: rgba(255,255,255,.72); color: var(--purple); font-family: var(--font-mono); font-size: 8px; }
 .life-node strong, .life-node small { display: block; }
-.life-node strong { margin-top: 28px; font-family: var(--font-display); font-size: 24px; font-weight: 500; }
+.life-node strong { margin-top: 25px; font-family: var(--font-display); font-size: 24px; font-weight: 500; line-height: .98; }
 .life-node small { margin-top: 6px; color: var(--muted); font-size: 11px; }
-.life-arrow { color: #87837a; font-style: normal; }
-.lifecycle-real .build, .lifecycle-real .maintain { background: #e8defe; transform: translateY(-12px); }
-.loop-line { position: absolute; right: 0; bottom: -66px; width: calc(50% - 24px); height: 52px; border-right: 2px solid #7954d8; border-bottom: 2px solid #7954d8; border-left: 2px solid #7954d8; border-radius: 0 0 22px 22px; animation: loopGlow 1.8s ease-in-out infinite; }
-.loop-line::before { position: absolute; top: -16px; left: -7px; content: '↑'; color: #7954d8; font-weight: 800; }
-.loop-line span { position: absolute; right: 24px; bottom: 12px; color: #6b48c5; font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
-.finish-line { position: absolute; right: 0; bottom: -60px; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid rgba(17,17,15,.13); border-radius: 12px; background: white; }
-.finish-line span { color: var(--muted); font-size: 10px; }
-.finish-line strong { font-size: 12px; }
+.life-arrow { position: relative; z-index: 3; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(17,17,15,.1); border-radius: 50%; background: white; color: #6f46d9; font-style: normal; box-shadow: 0 8px 20px -16px rgba(17,17,15,.7); }
+.lifecycle-real .build, .lifecycle-real .maintain { transform: translateY(-8px); box-shadow: 0 25px 45px -32px rgba(86,55,157,.55); }
+.first-version { transform: scale(1.055); border-color: #11110f; background: #11110f !important; color: white; box-shadow: 0 24px 50px -32px rgba(17,17,15,.8); }
+.first-version span { background: rgba(255,255,255,.14); color: white; }
+.first-version small { color: rgba(255,255,255,.62); }
+.loop-line { position: absolute; z-index: 1; right: 30px; bottom: 22px; width: calc(50% - 44px); height: 54px; border-right: 2px solid #7954d8; border-bottom: 2px solid #7954d8; border-left: 2px solid #7954d8; border-radius: 0 0 24px 24px; animation: loopGlow 1.8s ease-in-out infinite; }
+.loop-line::before { position: absolute; top: -17px; left: -7px; content: '↑'; color: #7954d8; font-weight: 800; }
+.loop-line span { position: absolute; right: 18px; bottom: 12px; color: #6b48c5; font-family: var(--font-mono); font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
+.finish-line { position: absolute; z-index: 3; right: 30px; bottom: 24px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid #9ac9a7; border-radius: 999px; background: #e1f1e5; }
+.finish-line span { color: #4f6655; font-size: 9px; }
+.finish-line strong { color: #176b39; font-size: 11px; }
 @keyframes loopGlow { 50% { border-color: #ec3f95; } }
 
 .slide-4 { background: #e7e3db; }
