@@ -33,7 +33,7 @@ const labels = computed(() => locale.value === 'es'
 .site-footer { padding: 54px 0 42px; border-top: 1px solid rgba(17,17,15,0.12); background: #f1efe9; color: #11110f; }
 .footer-shell { display: grid; width: min(1240px, calc(100% - 48px)); margin: 0 auto; grid-template-columns: 1fr auto auto; align-items: center; gap: 54px; }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
-.footer-mark { width: 30px; height: 30px; object-fit: contain; }
+.footer-mark { width: 34px; height: 34px; object-fit: contain; }
 .footer-brand strong { display: block; font-size: 14px; }
 .footer-brand p { margin: 3px 0 0; color: #77746c; font-size: 12px; }
 .footer-links { display: flex; gap: 24px; }

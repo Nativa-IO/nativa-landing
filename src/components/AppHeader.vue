@@ -77,7 +77,7 @@ const downloadUrl = computed(() => macUrl.value || windowsUrl.value || '#vida')
   text-decoration: none;
 }
 
-.brand-symbol { width: 27px; height: 27px; object-fit: contain; }
+.brand-symbol { width: 34px; height: 34px; object-fit: contain; }
 
 .main-nav { display: flex; align-items: center; gap: 30px; }
 .main-nav a { color: #55534d; font-size: 13px; font-weight: 540; text-decoration: none; transition: color 160ms ease; }
