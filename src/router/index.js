@@ -13,6 +13,12 @@ const routes = [
     component: () => import('../views/ContentView.vue'),
     meta: { title: 'Content | Nativa' },
   },
+  {
+    path: '/content/vision',
+    name: 'vision-deck',
+    component: () => import('../views/VisionDeckView.vue'),
+    meta: { title: 'La visión de Nativa' },
+  },
 ]
 
 const router = createRouter({

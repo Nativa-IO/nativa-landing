@@ -12,7 +12,7 @@
 
     <section class="decks-section">
       <div class="shell decks-grid">
-        <article class="deck-card deck-card-idea">
+        <router-link to="/content/vision" class="deck-card deck-card-idea">
           <div class="slide-preview slide-idea" aria-hidden="true">
             <div class="slide-brand">Nativa</div>
             <p>{{ copy.ideaSlide }}</p>
@@ -27,9 +27,9 @@
               <h2>{{ copy.ideaTitle }}</h2>
               <p>{{ copy.ideaBody }}</p>
             </div>
-            <span class="status">{{ copy.status }}</span>
+            <span class="status status-ready">{{ copy.open }}</span>
           </div>
-        </article>
+        </router-link>
 
         <article class="deck-card deck-card-model">
           <div class="slide-preview slide-model" aria-hidden="true">
@@ -79,8 +79,9 @@ const content = {
     ideaBody: 'El problema, la visión y la forma en que Nativa reúne a todas las personas que participan en construir software.',
     modelBody: 'La oportunidad, los clientes, la propuesta de valor y las decisiones que sostienen el crecimiento de Nativa.',
     status: 'En preparación',
+    open: 'Abrir deck →',
     nextLabel: 'Siguiente paso',
-    nextBody: 'Cada recuadro será la portada de una presentación. Cuando estén listas, podrás abrirlas, descargarlas o compartirlas desde aquí.',
+    nextBody: 'La presentación de visión ya se puede recorrer. El siguiente recuadro será el business model y, después, cada deck podrá descargarse o compartirse desde aquí.',
   },
   en: {
     title: 'The ideas behind Nativa, told as presentations.',
@@ -91,8 +92,9 @@ const content = {
     ideaBody: 'The problem, the vision, and how Nativa brings together everyone involved in building software.',
     modelBody: 'The opportunity, customers, value proposition, and decisions that support Nativa’s growth.',
     status: 'In progress',
+    open: 'Open deck →',
     nextLabel: 'Next step',
-    nextBody: 'Each card will become the cover of a presentation. Once ready, you will be able to open, download, or share it from here.',
+    nextBody: 'The vision presentation is ready to explore. The business model comes next, and each deck will later be available to download or share from here.',
   },
 }
 
@@ -129,7 +131,8 @@ const copy = computed(() => content[locale.value] ?? content.es)
 
 .decks-section { padding: 20px 0 130px; }
 .decks-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
-.deck-card { overflow: hidden; border: 1px solid rgba(17,17,15,.13); border-radius: 24px; background: rgba(250,249,245,.76); box-shadow: 0 24px 70px -52px rgba(17,17,15,.5); }
+.deck-card { overflow: hidden; border: 1px solid rgba(17,17,15,.13); border-radius: 24px; background: rgba(250,249,245,.76); color: inherit; text-decoration: none; box-shadow: 0 24px 70px -52px rgba(17,17,15,.5); transition: transform 180ms ease, box-shadow 180ms ease; }
+.deck-card-idea:hover { transform: translateY(-4px); box-shadow: 0 34px 80px -48px rgba(17,17,15,.55); }
 .slide-preview { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid rgba(17,17,15,.12); }
 .slide-number { position: absolute; right: 26px; bottom: 24px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; }
 
@@ -160,6 +163,7 @@ const copy = computed(() => content[locale.value] ?? content.es)
 .deck-copy h2 { margin: 12px 0 0; font-family: var(--font-display); font-size: 38px; font-weight: 500; letter-spacing: -.03em; line-height: 1; }
 .deck-copy div > p:last-child { margin: 18px 0 0; color: #67665f; font-size: 14px; line-height: 1.65; }
 .status { flex: 0 0 auto; padding: 8px 12px; border: 1px solid rgba(17,17,15,.13); border-radius: 999px; color: #67665f; font-size: 11px; font-weight: 650; }
+.status-ready { border-color: #11110f; background: #11110f; color: white; }
 
 .content-note { padding: 86px 0 100px; background: #121210; color: #f8f6ef; }
 .note-layout { display: grid; grid-template-columns: .35fr 1fr; gap: 90px; align-items: start; }
