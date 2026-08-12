@@ -19,7 +19,7 @@ const { locale } = useI18n()
 watch(locale, (lang) => {
   document.documentElement.lang = lang
   document.title = lang === 'es'
-    ? 'Nativa | Software creado con IA, listo para la vida real'
-    : 'Nativa | AI-built software, ready for real life'
+    ? 'Nativa | El trabajo de software, unido'
+    : 'Nativa | Software work, together'
 }, { immediate: true })
 </script>

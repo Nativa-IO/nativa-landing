@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">Icono de Nativa — franja diagonal</title>
-  <desc id="desc">N negra con una franja alebrije alineada con la diagonal sobre fondo marfil.</desc>
+  <title id="title">Icono de Nativa — franja completa</title>
+  <desc id="desc">N negra con una franja alebrije que sigue toda la letra sobre fondo marfil.</desc>
   <defs>
-    <linearGradient id="alebrije" gradientUnits="userSpaceOnUse" x1="106" y1="80" x2="406" y2="432">
+    <linearGradient id="alebrije" gradientUnits="userSpaceOnUse" x1="72" y1="54" x2="444" y2="454">
       <stop offset="0" stop-color="#00B8C8"/><stop offset=".16" stop-color="#00B8C8"/>
       <stop offset=".161" stop-color="#1F6FD1"/><stop offset=".33" stop-color="#1F6FD1"/>
       <stop offset=".331" stop-color="#EC3F95"/><stop offset=".5" stop-color="#EC3F95"/>
@@ -10,6 +10,11 @@
       <stop offset=".671" stop-color="#F4C735"/><stop offset=".84" stop-color="#F4C735"/>
       <stop offset=".841" stop-color="#58AE4D"/><stop offset="1" stop-color="#58AE4D"/>
     </linearGradient>
+    <clipPath id="nClip">
+      <rect x="72" y="72" width="102" height="368"/>
+      <rect x="338" y="72" width="102" height="368"/>
+      <path d="M72 72h102l266 368H338L72 72Z"/>
+    </clipPath>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#17150F" flood-opacity=".16"/></filter>
   </defs>
   <rect x="24" y="24" width="464" height="464" rx="108" fill="#F5F3ED" stroke="#D6D3CB" stroke-width="4" filter="url(#shadow)"/>
@@ -17,6 +22,6 @@
     <rect x="72" y="72" width="102" height="368" fill="#080807"/>
     <rect x="338" y="72" width="102" height="368" fill="#080807"/>
     <path d="M72 72h102l266 368H338L72 72Z" fill="#080807"/>
-    <path d="M111 72h32l258 368h-32L111 72Z" fill="url(#alebrije)"/>
+    <path d="M123 440V72L389 440V72" fill="none" stroke="url(#alebrije)" stroke-width="30" stroke-linecap="butt" stroke-linejoin="bevel" clip-path="url(#nClip)"/>
   </g>
 </svg>

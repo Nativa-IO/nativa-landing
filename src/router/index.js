@@ -5,7 +5,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: () => import('../views/HomeView.vue'),
-    meta: { title: 'Nativa | Software creado con IA, listo para la vida real' },
+    meta: { title: 'Nativa | El trabajo de software, unido' },
   },
 ]
 

@@ -25,8 +25,8 @@ import { useI18n } from '../composables/useI18n'
 const { locale } = useI18n()
 const brandMarkUrl = `${import.meta.env.BASE_URL}brand/nativa-mark.svg`
 const labels = computed(() => locale.value === 'es'
-  ? { tagline: 'Software creado con IA, listo para la vida real.', how: 'Cómo funciona', product: 'Producto' }
-  : { tagline: 'AI-built software, ready for real life.', how: 'How it works', product: 'Product' })
+  ? { tagline: 'El trabajo de software, unido.', how: 'Cómo funciona', product: 'Producto' }
+  : { tagline: 'Software work, together.', how: 'How it works', product: 'Product' })
 </script>
 
 <style scoped>

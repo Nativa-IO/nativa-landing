@@ -236,28 +236,28 @@ const { ready, macUrl, windowsUrl, macReady, windowsReady } = useDownloads()
 
 const content = {
   es: {
-    heroKicker: 'Software creado con IA, listo para la vida real',
-    heroTitle: 'La IA construye rápido. Nativa hace que dure.',
-    heroBody: 'Crea, prueba y mejora software con la velocidad de la IA, mientras Nativa cuida los datos, la infraestructura y cada cambio que sucede en el camino.',
+    heroKicker: 'Un solo lugar para todos los que construyen',
+    heroTitle: 'Más personas construyen software. Nativa mantiene el trabajo unido.',
+    heroBody: 'Clientes, diseñadores, equipos y especialistas pueden proponer, probar y aprobar cambios sobre el mismo producto, sin perder contexto ni control.',
     heroPrimary: 'Ver cómo funciona',
     heroSecondary: 'Conocer Nativa',
     heroNote: 'Tu aplicación · tus datos · tu control',
     heroCardEyebrow: 'Todo en su lugar',
     heroCardTitle: 'Una sola vista para saber que todo está bien.',
     download: 'Descargar Nativa',
-    truthKicker: 'La realidad después del prompt',
-    truthTitle: 'El código se volvió barato. El software no.',
-    truthBody: 'Una demo puede nacer en una tarde. Lo difícil viene después: mantenerla segura, cambiarla sin romperla, trabajar con datos reales y permitir que otras personas colaboren. Ahí empieza Nativa.',
+    truthKicker: 'El reto es trabajar juntos',
+    truthTitle: 'Crear un cambio es fácil. Coordinar los siguientes no.',
+    truthBody: 'Cuando más personas participan en un producto, el contexto se dispersa entre chats, documentos, ramas y ambientes. Las herramientas actuales administran piezas del trabajo; Nativa mantiene unida la historia completa.',
     storyKicker: 'De la idea a producción',
-    storyTitle: 'Nativa acompaña toda la vida de tu software.',
-    storyBody: 'No necesitas aprender una colección de herramientas. Nativa reúne el proceso completo y te muestra lo importante en cada momento.',
+    storyTitle: 'Cada persona participa sin romper el hilo.',
+    storyBody: 'Nativa reúne conversaciones, cambios, datos y aprobaciones para que cada colaborador encuentre el contexto que necesita en el momento correcto.',
     steps: [
       {
         number: '01',
         eyebrow: 'Empezar',
-        title: 'Cuenta tu idea. Nativa prepara el camino.',
-        body: 'Puedes empezar desde cero o traer un proyecto que ya existe. Una conversación se convierte en un plan claro antes de construir.',
-        points: ['Tu proyecto comienza ordenado', 'El código queda en tu cuenta', 'El plan evoluciona contigo'],
+        title: 'Reúne al equipo alrededor de una dirección clara.',
+        body: 'Puedes empezar desde cero o traer un proyecto que ya existe. Las conversaciones se convierten en un plan compartido antes de construir.',
+        points: ['Todos parten del mismo contexto', 'El código queda en tu cuenta', 'El plan evoluciona con el equipo'],
         windowLabel: 'Un nuevo proyecto',
         image: 'product/create-project.webp',
         alt: 'Creación de un proyecto nuevo en Nativa',
@@ -267,9 +267,9 @@ const content = {
       {
         number: '02',
         eyebrow: 'Cambiar',
-        title: 'Prueba cambios sin poner en riesgo lo que ya funciona.',
-        body: 'Cada petición vive en su propio espacio. Puedes verla, probarla y compartirla antes de decidir si debe formar parte de tu aplicación.',
-        points: ['Una vista previa por cambio', 'Datos separados para probar', 'Aprobar o descartar con tranquilidad'],
+        title: 'Cada colaborador prueba cambios sin estorbar a los demás.',
+        body: 'Cada petición vive en su propio espacio. El equipo puede verla, probarla y compartirla antes de decidir si debe formar parte de la aplicación.',
+        points: ['Una vista previa por cambio', 'Datos separados para probar', 'Revisión y aprobación compartidas'],
         windowLabel: 'Sesiones de trabajo',
         image: 'product/sessions.webp',
         alt: 'Lista de sesiones de trabajo dentro de un proyecto',
@@ -281,8 +281,8 @@ const content = {
       {
         number: '03',
         eyebrow: 'Recordar',
-        title: 'Tu equipo y tu IA comparten la misma memoria.',
-        body: 'Decisiones, documentos y aprendizajes permanecen junto al proyecto. Nativa utiliza ese contexto para que no tengas que explicar lo mismo una y otra vez.',
+        title: 'El conocimiento pertenece al equipo, no a una conversación.',
+        body: 'Decisiones, documentos y aprendizajes permanecen junto al proyecto. Cada persona puede continuar el trabajo sin empezar de cero ni pedir que le expliquen todo otra vez.',
         points: ['Conocimiento que se conserva', 'Documentos cerca del trabajo', 'Contexto útil en cada sesión'],
         windowLabel: 'La memoria del proyecto',
         image: 'product/knowledge.webp',
@@ -290,13 +290,13 @@ const content = {
         secondaryImage: 'product/storage.webp',
         secondaryAlt: 'Documentos organizados dentro de Nativa',
         captionLabel: 'El contexto permanece',
-        caption: 'Lo que aprende una sesión ayuda a la siguiente.',
+        caption: 'Lo que aprende una persona ayuda a la siguiente.',
       },
       {
         number: '04',
         eyebrow: 'Publicar',
-        title: 'Aprueba con claridad. Publica con confianza.',
-        body: 'Cuando un cambio ya fue probado, Nativa reúne lo que va a salir y conserva la historia. Siempre sabes qué cambió y dónde está funcionando.',
+        title: 'Las decisiones quedan claras antes de publicar.',
+        body: 'Cuando un cambio ya fue revisado, Nativa reúne lo que va a salir y conserva quién participó, qué cambió y dónde está funcionando.',
         points: ['Validación antes de aprobar', 'Historial de cada versión', 'Regreso seguro cuando hace falta'],
         windowLabel: 'Una versión lista',
         image: 'product/deployment-detail.webp',
@@ -308,15 +308,15 @@ const content = {
       },
     ],
     careKicker: 'Lo complejo, bien cuidado',
-    careTitle: 'Tú decides qué construir. Nativa cuida lo que normalmente queda escondido.',
+    careTitle: 'Tu equipo decide qué construir. Nativa cuida la coordinación que normalmente queda escondida.',
     careItems: [
-      { mark: '◎', title: 'Un espacio seguro para cada cambio', body: 'Cada sesión mantiene separados el trabajo, los datos y la vista previa hasta que tú decidas.' },
+      { mark: '◎', title: 'Un espacio seguro para cada cambio', body: 'Cada sesión mantiene separados el trabajo, los datos y la vista previa hasta que el equipo decida.' },
       { mark: '◇', title: 'Tus secretos no viven en el chat', body: 'Credenciales y llaves permanecen protegidas en una bóveda que solo tu propia infraestructura puede resolver.' },
       { mark: '↗', title: 'Tu software puede salir contigo', body: 'El repositorio, la base de datos y la infraestructura siguen bajo tu control, en Nativa Cloud o en tus servidores.' },
     ],
     galleryKicker: 'Una casa para tu producto',
     galleryTitle: 'Todo lo que tu software necesita, sin brincar entre diez herramientas.',
-    galleryBody: 'La interfaz está hecha para orientarte. Debajo existe ingeniería seria; arriba, una forma clara de trabajar.',
+    galleryBody: 'Cada persona encuentra proyectos, decisiones, pendientes y documentos en el mismo lugar. Menos saltos entre herramientas; más continuidad.',
     galleryItems: [
       { eyebrow: 'Proyectos', title: 'Siempre sabes dónde estás.', body: 'Trabajo activo, avances y versiones reunidos en una sola vista.' },
       { eyebrow: 'Conocimiento', title: 'Las decisiones no se pierden.', body: 'Nativa conserva la memoria que ayuda a personas y agentes a trabajar mejor.' },
@@ -332,9 +332,9 @@ const content = {
     atlasTitle: 'Nativa vive dentro de tu organización.',
     atlasBody: 'Para empresas que necesitan control total sobre su infraestructura y sus datos.',
     atlasPoints: ['Tus servidores y políticas', 'Datos dentro de tu perímetro', 'Acompañamiento para implementarla'],
-    finalKicker: 'De demo a sistema',
-    finalTitle: 'Tu próxima aplicación no tiene que quedarse en prototipo.',
-    finalBody: 'Crea con la velocidad de la IA y mantén el control cuando el software empiece a importar de verdad.',
+    finalKicker: 'Construir es un trabajo compartido',
+    finalTitle: 'El software crece mejor cuando todos pueden participar.',
+    finalBody: 'Invita a quienes conocen el problema, prueba cada propuesta por separado y conserva una historia común desde la primera idea hasta producción.',
     downloadMac: 'Descargar para macOS',
     downloadWindows: 'Descargar para Windows',
     comingSoon: 'Las descargas estarán disponibles muy pronto.',
@@ -345,37 +345,37 @@ const content = {
     altStorage: 'Archivos y documentos organizados dentro de Nativa',
   },
   en: {
-    heroKicker: 'AI-built software, ready for real life',
-    heroTitle: 'AI builds fast. Nativa makes it last.',
-    heroBody: 'Create, test, and improve software at AI speed while Nativa takes care of the data, infrastructure, and every change along the way.',
+    heroKicker: 'One place for everyone who builds',
+    heroTitle: 'More people build software. Nativa keeps the work together.',
+    heroBody: 'Clients, designers, teams, and specialists can propose, test, and approve changes on the same product without losing context or control.',
     heroPrimary: 'See how it works',
     heroSecondary: 'Meet Nativa',
     heroNote: 'Your application · your data · your control',
     heroCardEyebrow: 'Everything in its place',
     heroCardTitle: 'One view to know everything is okay.',
     download: 'Download Nativa',
-    truthKicker: 'Life after the prompt',
-    truthTitle: 'Code became cheap. Software did not.',
-    truthBody: 'A demo can be born in an afternoon. The hard part comes next: keeping it secure, changing it without breaking it, working with real data, and letting other people collaborate. That is where Nativa begins.',
+    truthKicker: 'The challenge is working together',
+    truthTitle: 'Making one change is easy. Coordinating the next ones is not.',
+    truthBody: 'As more people join a product, context scatters across chats, documents, branches, and environments. Existing tools manage pieces of the work; Nativa keeps the complete story together.',
     storyKicker: 'From idea to production',
-    storyTitle: 'Nativa stays with your software for its entire life.',
-    storyBody: 'You do not need to learn a collection of tools. Nativa brings the whole process together and shows you what matters at each moment.',
+    storyTitle: 'Everyone participates without breaking the thread.',
+    storyBody: 'Nativa brings conversations, changes, data, and approvals together so every collaborator finds the context they need at the right moment.',
     steps: [
-      { number: '01', eyebrow: 'Start', title: 'Share your idea. Nativa prepares the way.', body: 'Start from scratch or bring an existing project. A conversation becomes a clear plan before anything is built.', points: ['Every project starts organized', 'The code stays in your account', 'The plan evolves with you'], windowLabel: 'A new project', image: 'product/create-project.webp', alt: 'Creating a new project in Nativa', captionLabel: 'Clarity first', caption: 'From an open idea to a concrete starting point.' },
-      { number: '02', eyebrow: 'Change', title: 'Try changes without risking what already works.', body: 'Every request lives in its own space. See it, test it, and share it before deciding whether it belongs in your application.', points: ['A live preview for every change', 'Separate data for safe testing', 'Approve or discard with confidence'], windowLabel: 'Work sessions', image: 'product/sessions.webp', alt: 'Work sessions inside a project', secondaryImage: 'product/session-detail.webp', secondaryAlt: 'Session details in Nativa', captionLabel: 'Change without fear', caption: 'Every change gets its own place to grow.' },
-      { number: '03', eyebrow: 'Remember', title: 'Your team and your AI share the same memory.', body: 'Decisions, documents, and lessons stay with the project. Nativa uses that context so you do not have to explain the same thing again and again.', points: ['Knowledge that stays', 'Documents close to the work', 'Useful context in every session'], windowLabel: 'Project memory', image: 'product/knowledge.webp', alt: 'Organized knowledge in Nativa', secondaryImage: 'product/storage.webp', secondaryAlt: 'Organized documents in Nativa', captionLabel: 'Context stays', caption: 'What one session learns helps the next one.' },
-      { number: '04', eyebrow: 'Publish', title: 'Approve clearly. Publish confidently.', body: 'Once a change has been tested, Nativa gathers what will ship and preserves the story. You always know what changed and where it is running.', points: ['Validation before approval', 'A history for every version', 'A safe way back when needed'], windowLabel: 'A ready version', image: 'product/deployment-detail.webp', alt: 'A published and active version in Nativa', secondaryImage: 'product/deployments.webp', secondaryAlt: 'Version history in Nativa', captionLabel: 'Nothing ships blind', caption: 'From approved change to live version, without losing the story.' },
+      { number: '01', eyebrow: 'Start', title: 'Bring the team around one clear direction.', body: 'Start from scratch or bring an existing project. Conversations become a shared plan before anything is built.', points: ['Everyone starts with the same context', 'The code stays in your account', 'The plan evolves with the team'], windowLabel: 'A new project', image: 'product/create-project.webp', alt: 'Creating a new project in Nativa', captionLabel: 'Clarity first', caption: 'From an open idea to a concrete starting point.' },
+      { number: '02', eyebrow: 'Change', title: 'Every collaborator tests changes without blocking the rest.', body: 'Every request lives in its own space. The team can see it, test it, and share it before deciding whether it belongs in the application.', points: ['A live preview for every change', 'Separate data for safe testing', 'Shared review and approval'], windowLabel: 'Work sessions', image: 'product/sessions.webp', alt: 'Work sessions inside a project', secondaryImage: 'product/session-detail.webp', secondaryAlt: 'Session details in Nativa', captionLabel: 'Change without fear', caption: 'Every change gets its own place to grow.' },
+      { number: '03', eyebrow: 'Remember', title: 'Knowledge belongs to the team, not to one conversation.', body: 'Decisions, documents, and lessons stay with the project. Anyone can continue the work without starting over or asking for the full story again.', points: ['Knowledge that stays', 'Documents close to the work', 'Useful context in every session'], windowLabel: 'Project memory', image: 'product/knowledge.webp', alt: 'Organized knowledge in Nativa', secondaryImage: 'product/storage.webp', secondaryAlt: 'Organized documents in Nativa', captionLabel: 'Context stays', caption: 'What one person learns helps the next one.' },
+      { number: '04', eyebrow: 'Publish', title: 'Decisions are clear before anything ships.', body: 'Once a change has been reviewed, Nativa gathers what will ship and preserves who participated, what changed, and where it is running.', points: ['Validation before approval', 'A history for every version', 'A safe way back when needed'], windowLabel: 'A ready version', image: 'product/deployment-detail.webp', alt: 'A published and active version in Nativa', secondaryImage: 'product/deployments.webp', secondaryAlt: 'Version history in Nativa', captionLabel: 'Nothing ships blind', caption: 'From approved change to live version, without losing the story.' },
     ],
     careKicker: 'The complexity, carefully handled',
-    careTitle: 'You decide what to build. Nativa takes care of what usually stays hidden.',
+    careTitle: 'Your team decides what to build. Nativa handles the coordination that usually stays hidden.',
     careItems: [
-      { mark: '◎', title: 'A safe space for every change', body: 'Every session keeps the work, data, and preview separate until you decide.' },
+      { mark: '◎', title: 'A safe space for every change', body: 'Every session keeps the work, data, and preview separate until the team decides.' },
       { mark: '◇', title: 'Your secrets do not live in chat', body: 'Credentials and keys remain protected in a vault that only your own infrastructure can resolve.' },
       { mark: '↗', title: 'Your software can leave with you', body: 'The repository, database, and infrastructure remain under your control, in Nativa Cloud or on your servers.' },
     ],
     galleryKicker: 'A home for your product',
     galleryTitle: 'Everything your software needs, without jumping between ten tools.',
-    galleryBody: 'The interface is made to orient you. Serious engineering lives underneath; a clear way of working lives on top.',
+    galleryBody: 'Everyone finds projects, decisions, pending work, and documents in the same place. Fewer tool switches; more continuity.',
     galleryItems: [
       { eyebrow: 'Projects', title: 'You always know where you are.', body: 'Active work, progress, and versions gathered in one place.' },
       { eyebrow: 'Knowledge', title: 'Decisions do not get lost.', body: 'Nativa preserves the memory that helps people and agents work better.' },
@@ -391,9 +391,9 @@ const content = {
     atlasTitle: 'Nativa lives inside your organization.',
     atlasBody: 'For companies that need complete control over infrastructure and data.',
     atlasPoints: ['Your servers and policies', 'Data inside your perimeter', 'Guided implementation'],
-    finalKicker: 'From demo to system',
-    finalTitle: 'Your next application does not have to stay a prototype.',
-    finalBody: 'Create at AI speed and stay in control when the software starts to truly matter.',
+    finalKicker: 'Building is shared work',
+    finalTitle: 'Software grows better when everyone can participate.',
+    finalBody: 'Invite the people who understand the problem, test every proposal separately, and preserve one shared history from the first idea to production.',
     downloadMac: 'Download for macOS',
     downloadWindows: 'Download for Windows',
     comingSoon: 'Downloads will be available very soon.',
@@ -470,10 +470,10 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
   max-width: 680px;
   margin: 26px 0 0;
   font-family: var(--font-display);
-  font-size: clamp(64px, 6.6vw, 96px);
-  font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 0.94;
+  font-size: clamp(58px, 5.8vw, 86px);
+  font-weight: 500;
+  letter-spacing: -0.038em;
+  line-height: 1;
 }
 
 .hero-lead {
@@ -578,16 +578,15 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 }
 
 .hero-image-crop {
-  height: 510px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
 }
 
 .hero-image-crop img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 54% center;
-  transform: scale(1.14);
+  object-fit: contain;
   filter: saturate(0.82) contrast(0.96);
 }
 
@@ -641,10 +640,10 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
   max-width: 900px;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(58px, 7vw, 98px);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 0.98;
+  font-size: clamp(52px, 6.2vw, 86px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
 }
 
 .truth-layout div > p {
@@ -661,10 +660,10 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 .section-heading h2 {
   margin: 22px 0 0;
   font-family: var(--font-display);
-  font-size: clamp(52px, 5.8vw, 78px);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 1;
+  font-size: clamp(48px, 5.2vw, 70px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.03;
 }
 
 .section-heading > p:last-child {
@@ -715,10 +714,10 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 .step-copy h3 {
   margin: 14px 0 0;
   font-family: var(--font-display);
-  font-size: clamp(42px, 4vw, 58px);
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-size: clamp(38px, 3.6vw, 52px);
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
 }
 
 .step-copy > p:not(.step-eyebrow) {
@@ -753,34 +752,29 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
   font-weight: 800;
 }
 
-.step-visual { position: relative; min-width: 0; padding: 28px 0 54px; }
+.step-visual { position: relative; display: flex; min-width: 0; flex-direction: column; padding: 28px 0 0; }
 .story-window { background: #111; }
-.story-image-crop { height: 450px; overflow: hidden; }
-.story-image-crop img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); filter: saturate(0.86) contrast(0.96); }
-.step-visual-1 .story-image-crop img { object-position: 59% 38%; transform: scale(1.13); }
-.step-visual-2 .story-image-crop img { object-position: 55% 35%; transform: scale(1.12); }
-.step-visual-3 .story-image-crop img { object-position: 60% 25%; transform: scale(1.12); }
-.step-visual-4 .story-image-crop img { object-position: 56% 24%; transform: scale(1.1); }
+.story-image-crop { aspect-ratio: 16 / 10; overflow: hidden; }
+.story-image-crop img { display: block; width: 100%; height: 100%; object-fit: contain; filter: saturate(0.86) contrast(0.96); }
 
 .secondary-window {
-  position: absolute;
-  right: -28px;
-  bottom: 2px;
-  width: 44%;
+  position: static;
+  width: 64%;
+  margin-top: 16px;
+  align-self: flex-end;
   overflow: hidden;
-  border: 8px solid var(--paper-bright);
+  border: 1px solid var(--line);
   border-radius: 18px;
   background: #111;
   box-shadow: 0 26px 60px -30px rgba(17,17,15,0.55);
 }
 
-.secondary-window img { display: block; width: 100%; aspect-ratio: 1.38; object-fit: cover; object-position: center 30%; }
+.secondary-window img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
 
 .image-caption {
-  position: absolute;
-  left: 28px;
-  bottom: 16px;
-  width: min(320px, 48%);
+  position: static;
+  width: min(420px, 72%);
+  margin-top: 16px;
   padding: 15px 17px;
   border: 1px solid rgba(17,17,15,0.12);
   border-radius: 14px;
@@ -799,7 +793,7 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 .care-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 62px; }
 .care-card { min-height: 280px; padding: 30px; border: 1px solid rgba(17,17,15,0.12); border-radius: 20px; background: rgba(250,249,245,0.72); }
 .care-card > span { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(111,70,217,0.28); border-radius: 50%; color: #6f46d9; font-size: 18px; }
-.care-card h3 { margin: 50px 0 0; font-family: var(--font-display); font-size: 30px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; }
+.care-card h3 { margin: 50px 0 0; font-family: var(--font-display); font-size: 29px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.08; }
 .care-card p { margin: 16px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
 
 .gallery-section { padding: 132px 0; background: var(--paper-bright); }
@@ -808,16 +802,11 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 .gallery-card { grid-column: span 5; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); }
 .gallery-card-wide { grid-column: span 7; }
 .gallery-card-calm { background: #ece8df; }
-.gallery-image { height: 330px; overflow: hidden; border-bottom: 1px solid var(--line); background: #111; }
-.gallery-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.78) contrast(0.94); transition: transform 500ms cubic-bezier(.2,.8,.2,1); }
-.gallery-card:hover .gallery-image img { transform: scale(1.025); }
-.gallery-projects img { object-position: 54% 24%; }
-.gallery-knowledge img { object-position: 68% 16%; }
-.gallery-issues img { object-position: 57% 18%; }
-.gallery-storage img { object-position: 58% 22%; }
+.gallery-image { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); background: #111; }
+.gallery-image img { display: block; width: 100%; height: 100%; object-fit: contain; filter: saturate(0.78) contrast(0.94); }
 .gallery-copy { padding: 28px 30px 32px; }
 .gallery-copy span { color: #6f46d9; font-family: var(--font-mono); font-size: 9px; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; }
-.gallery-copy h3 { margin: 10px 0 0; font-family: var(--font-display); font-size: 30px; font-weight: 400; letter-spacing: -0.03em; }
+.gallery-copy h3 { margin: 10px 0 0; font-family: var(--font-display); font-size: 29px; font-weight: 500; letter-spacing: -0.025em; }
 .gallery-copy p { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
 
 .modes-section { padding: 130px 0; background: #121210; color: var(--paper-bright); }
@@ -829,14 +818,14 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 .mode-card-light { background: #f3f0ea; color: var(--ink); }
 .mode-card-accent { background: #7f55df; color: white; }
 .mode-label { margin: 76px 0 0; font-family: var(--font-mono); font-size: 10px; font-weight: 650; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; }
-.mode-card h3 { max-width: 500px; margin: 16px 0 0; font-family: var(--font-display); font-size: clamp(38px, 4vw, 54px); font-weight: 400; letter-spacing: -0.04em; line-height: 1; }
+.mode-card h3 { max-width: 500px; margin: 16px 0 0; font-family: var(--font-display); font-size: clamp(36px, 3.7vw, 49px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; }
 .mode-card > p:not(.mode-label) { max-width: 480px; margin: 22px 0 0; font-size: 15px; line-height: 1.65; opacity: 0.72; }
 .mode-card li { border-color: currentColor; color: inherit; opacity: 0.78; }
 .mode-card-accent li::before { color: white; }
 
 .final-section { padding: 120px 0; background: var(--paper); }
 .final-layout { display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: end; }
-.final-layout h2 { max-width: 810px; margin: 20px 0 0; font-family: var(--font-display); font-size: clamp(54px, 6vw, 84px); font-weight: 400; letter-spacing: -0.045em; line-height: 0.98; }
+.final-layout h2 { max-width: 810px; margin: 20px 0 0; font-family: var(--font-display); font-size: clamp(50px, 5.4vw, 74px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; }
 .final-layout div > p:last-child { max-width: 650px; margin: 26px 0 0; color: var(--muted); font-size: 17px; line-height: 1.68; }
 .final-actions { min-width: 240px; flex-direction: column; }
 .coming-soon { max-width: 240px; color: var(--muted); font-size: 13px; line-height: 1.5; }
@@ -849,7 +838,6 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
   .story-step,
   .story-step-reverse { grid-template-columns: 0.75fr 1.25fr; gap: 50px; }
   .story-step-reverse .step-copy { order: 2; }
-  .gallery-image { height: 290px; }
 }
 
 @media (max-width: 780px) {
@@ -858,7 +846,6 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
   .hero-copy h1 { font-size: clamp(54px, 17vw, 74px); }
   .hero-lead { font-size: 16px; }
   .hero-visual { width: 100%; }
-  .hero-image-crop { height: 360px; }
   .visual-note { left: 14px; bottom: -46px; width: 72%; }
   .truth-layout { grid-template-columns: 1fr; gap: 40px; }
   .truth-layout h2 { font-size: clamp(54px, 15vw, 78px); }
@@ -870,15 +857,13 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
   .story-step-reverse .step-copy,
   .story-step-reverse .step-visual { order: initial; }
   .step-copy h3 { font-size: clamp(40px, 11vw, 54px); }
-  .story-image-crop { height: 340px; }
-  .secondary-window { right: -4px; width: 46%; }
-  .image-caption { left: 12px; width: 54%; }
+  .secondary-window { width: 78%; }
+  .image-caption { width: 78%; }
   .care-grid,
   .modes-grid { grid-template-columns: 1fr; }
   .care-card { min-height: 240px; }
   .gallery-card,
   .gallery-card-wide { grid-column: 1 / -1; }
-  .gallery-image { height: 270px; }
   .mode-card { min-height: 440px; padding: 30px; }
   .final-layout { grid-template-columns: 1fr; gap: 28px; }
   .final-actions { align-items: flex-start; }
@@ -886,20 +871,14 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 
 @media (max-width: 460px) {
   .hero-copy h1 { font-size: 56px; }
-  .hero-image-crop { height: 290px; }
   .visual-note { width: 84%; }
   .truth-section { padding: 90px 0 98px; }
   .truth-layout h2 { font-size: 54px; }
-  .story-image-crop { height: 275px; }
-  .secondary-window { border-width: 5px; }
-  .image-caption { bottom: 10px; padding: 12px; }
-  .gallery-image { height: 230px; }
+  .image-caption { padding: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button,
-  .gallery-image img { transition: none; }
-  .button:hover,
-  .gallery-card:hover .gallery-image img { transform: none; }
+  .button { transition: none; }
+  .button:hover { transform: none; }
 }
 </style>
