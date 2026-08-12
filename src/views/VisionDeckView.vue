@@ -96,33 +96,9 @@
           </template>
 
           <template v-else-if="currentSlide === 3">
-            <div class="slide-kicker">04 · La nueva mesa</div>
-            <div class="people-layout">
-              <div class="before-panel">
-                <p>Antes</p>
-                <div class="single-person"><span>⌁</span><strong>Ingeniería</strong></div>
-                <small>El contexto vivía principalmente dentro del equipo técnico.</small>
-              </div>
-              <div class="shift-arrow">→</div>
-              <div class="now-panel">
-                <p>Ahora</p>
-                <div class="people-orbit">
-                  <div class="product-center">El producto</div>
-                  <span class="person ceo">CEO</span>
-                  <span class="person designer">Diseño</span>
-                  <span class="person developer">Programación</span>
-                  <span class="person expert">Experto</span>
-                  <span class="person security">Seguridad</span>
-                </div>
-              </div>
-            </div>
-            <h2 class="people-title">Más participación crea mejores productos. Sin coordinación, también crea más fricción.</h2>
-          </template>
-
-          <template v-else-if="currentSlide === 4">
             <div class="slide-heading-row problems-heading">
               <div>
-                <div class="slide-kicker">05 · La problemática</div>
+                <div class="slide-kicker">04 · La problemática</div>
                 <h2>El código es una parte. El sistema completo exige cinco cosas más.</h2>
               </div>
               <p>Patrones observados en entrevistas y proyectos que intentaron construir aplicaciones para sus empresas.</p>
@@ -136,8 +112,8 @@
             </div>
           </template>
 
-          <template v-else-if="currentSlide === 5">
-            <div class="slide-kicker">06 · Lo que cambió</div>
+          <template v-else-if="currentSlide === 4">
+            <div class="slide-kicker">05 · Lo que cambió</div>
             <div class="not-new-grid">
               <div class="old-needs">
                 <p>Necesidades de siempre</p>
@@ -164,7 +140,7 @@
           <template v-else>
             <div class="slide-heading-row architecture-heading">
               <div>
-                <div class="slide-kicker">07 · Cómo funciona</div>
+                <div class="slide-kicker">06 · Cómo funciona</div>
                 <h2>La misma experiencia. La red que tú elijas.</h2>
               </div>
               <div class="segmented-control infra-control" role="group" aria-label="Elegir dónde vive la infraestructura">
@@ -217,7 +193,7 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
-const slides = Array.from({ length: 7 })
+const slides = Array.from({ length: 6 })
 const currentSlide = ref(0)
 const lifecycleMode = ref('linear')
 const infraMode = ref('cloud')
@@ -368,26 +344,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .finish-line strong { color: #176b39; font-size: 11px; }
 @keyframes loopGlow { 50% { border-color: #ec3f95; } }
 
-.slide-4 { background: #e7e3db; }
-.people-layout { display: grid; grid-template-columns: .7fr auto 1.3fr; gap: 40px; margin-top: 56px; align-items: center; }
-.before-panel, .now-panel { min-height: 390px; padding: 30px; border: 1px solid rgba(17,17,15,.13); border-radius: 24px; background: rgba(250,249,245,.62); }
-.before-panel > p, .now-panel > p { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
-.single-person { display: grid; width: 170px; height: 170px; margin: 56px auto 30px; place-items: center; border-radius: 50%; background: #11110f; color: white; }
-.single-person span, .single-person strong { display: block; text-align: center; }
-.single-person span { font-size: 30px; }
-.single-person strong { font-size: 13px; }
-.before-panel small { display: block; max-width: 300px; margin: 0 auto; color: var(--muted); line-height: 1.55; text-align: center; }
-.shift-arrow { color: #7d7870; font-size: 28px; }
-.people-orbit { position: relative; height: 315px; }
-.product-center { position: absolute; top: 50%; left: 50%; display: grid; width: 130px; height: 130px; place-items: center; transform: translate(-50%,-50%); border-radius: 50%; background: #11110f; color: white; font-family: var(--font-display); font-size: 22px; text-align: center; }
-.person { position: absolute; display: grid; min-width: 86px; height: 86px; padding: 10px; place-items: center; border: 1px solid rgba(17,17,15,.14); border-radius: 50%; background: #faf9f5; font-size: 11px; font-weight: 700; box-shadow: 0 18px 40px -30px rgba(17,17,15,.7); }
-.person.ceo { top: 4px; left: 16%; background: #f2d7e4; }
-.person.designer { top: 0; right: 14%; background: #d8eceb; }
-.person.developer { top: 42%; right: 1%; background: #e8defe; }
-.person.expert { bottom: 0; right: 24%; background: #f3dfb8; }
-.person.security { bottom: 2%; left: 15%; background: #d8e7f6; }
-.people-title { max-width: 980px; margin: 34px 0 0 !important; font-size: clamp(34px, 3.4vw, 50px) !important; }
-
 .problems-heading h2 { max-width: 860px; font-size: clamp(42px, 4.4vw, 62px); }
 .problems-heading > p { max-width: 320px; margin: 26px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .problem-grid { display: grid; margin-top: 44px; grid-template-columns: repeat(6, 1fr); gap: 14px; }
@@ -401,8 +357,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .problem-04 { background: #d8eceb !important; }
 .problem-05 { background: #f3dfb8 !important; }
 
-.slide-6 { background: #121210; color: #f8f6ef; }
-.slide-6 .slide-kicker { color: #bba4ff; }
+.slide-5 { background: #121210; color: #f8f6ef; }
+.slide-5 .slide-kicker { color: #bba4ff; }
 .not-new-grid { display: grid; grid-template-columns: 1fr .24fr 1.2fr; gap: 36px; margin-top: 60px; align-items: center; }
 .old-needs, .new-risk { min-height: 390px; padding: 36px; border: 1px solid rgba(255,255,255,.13); border-radius: 24px; background: #1c1c19; }
 .old-needs > p, .new-risk > p { color: #aaa79e; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
@@ -415,7 +371,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .amplifier { display: grid; place-items: center; }
 .amplifier span { display: grid; width: 64px; height: 64px; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; color: #f4c735; font-family: var(--font-display); font-size: 38px; }
 .amplifier i { width: 1px; height: 30px; background: rgba(255,255,255,.16); }
-.slide-6 .slide-thesis { border-color: rgba(255,255,255,.13); }
+.slide-5 .slide-thesis { border-color: rgba(255,255,255,.13); }
 
 .architecture-heading h2 { max-width: 760px; font-size: clamp(44px, 4.5vw, 64px); }
 .infra-control { margin-top: 6px; }
@@ -473,7 +429,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .slide-stage h1 { font-size: 54px; }
   .slide-stage h2 { font-size: 46px; }
   .slide-thesis { position: static; margin-top: 38px; }
-  .waterfall-opening, .cheap-code-grid, .people-layout, .not-new-grid, .architecture-layout { grid-template-columns: 1fr; }
+  .waterfall-opening, .cheap-code-grid, .not-new-grid, .architecture-layout { grid-template-columns: 1fr; }
   .waterfall-opening { min-height: 0; }
   .waterfall-visual { height: 510px; margin-top: 10px; }
   .cheap-code-grid blockquote { margin-top: 8px; }
@@ -485,8 +441,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .life-arrow { transform: rotate(90deg); text-align: center; }
   .loop-line, .finish-line { position: static; width: 100%; margin-top: 10px; }
   .loop-line { height: 54px; }
-  .people-layout { gap: 18px; }
-  .shift-arrow { transform: rotate(90deg); text-align: center; }
   .problem-grid { grid-template-columns: 1fr; }
   .problem-grid article:nth-child(n) { grid-column: auto; min-height: 0; }
   .amplifier { transform: rotate(90deg); }
