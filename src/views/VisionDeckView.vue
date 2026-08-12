@@ -12,32 +12,29 @@
       <Transition :name="transitionName" mode="out-in">
         <section :key="currentSlide" class="slide-stage" :class="`slide-${currentSlide + 1}`">
           <template v-if="currentSlide === 0">
-            <div class="slide-kicker">01 · Un cambio de época</div>
-            <div class="opening-grid">
-              <div>
+            <div class="waterfall-opening">
+              <div class="waterfall-copy">
+                <div class="slide-kicker">01 · Un cambio de época</div>
                 <h1>El software cambió de un día para otro.</h1>
                 <p class="lead">Más personas pueden iniciar y modificar un producto. Empezar requiere menos ceremonia; sostener lo construido sigue exigiendo disciplina.</p>
-              </div>
-              <div class="change-board">
-                <p>Quienes participan</p>
-                <div class="participant-roster" aria-label="CEO, diseño, programación, seguridad, operación y expertos">
-                  <div class="participant-role role-ceo"><span>01</span><strong>CEO</strong></div>
-                  <div class="participant-role role-design"><span>02</span><strong>Diseño</strong></div>
-                  <div class="participant-role role-code"><span>03</span><strong>Programación</strong></div>
-                  <div class="participant-role role-security"><span>04</span><strong>Seguridad</strong></div>
-                  <div class="participant-role role-ops"><span>05</span><strong>Operación</strong></div>
-                  <div class="participant-role role-expert"><span>06</span><strong>Expertos</strong></div>
+                <div class="participant-stream">
+                  <small>Ahora construyen</small>
+                  <p><span>CEO</span><i /> <span>Diseño</span><i /> <span>Programación</span><i /> <span>Seguridad</span><i /> <span>Operación</span><i /> <span>Expertos</span></p>
                 </div>
-                <div class="practice-shift">
-                  <div class="practice-column practice-obsolete">
-                    <small>Ya no es necesario</small>
-                    <s>Requerimientos al 100%</s>
-                    <s>Una etapa de diseño cerrada</s>
-                  </div>
-                  <div class="practice-column practice-current">
-                    <small>Sigue siendo necesario</small>
-                    <strong>Mantenimiento · seguridad · gobernanza · coordinación</strong>
-                  </div>
+              </div>
+              <div class="waterfall-visual" aria-label="Cascada desde prácticas que ya no son necesarias hacia responsabilidades que permanecen">
+                <div class="waterfall-source">
+                  <small>Podemos empezar sin</small>
+                  <s>Requerimientos al 100%</s>
+                  <s>Diseño cerrado</s>
+                </div>
+                <div class="waterfall-ribbons" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+                <div class="waterfall-pool">
+                  <small>Sigue siendo necesario</small>
+                  <strong class="pool-maintain">Mantenimiento</strong>
+                  <strong class="pool-security">Seguridad</strong>
+                  <strong class="pool-governance">Gobernanza</strong>
+                  <strong class="pool-coordinate">Coordinación</strong>
                 </div>
               </div>
             </div>
@@ -290,25 +287,40 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .lead { max-width: 610px; color: var(--muted); font-size: 18px; line-height: 1.65; }
 .slide-thesis { position: absolute; right: clamp(40px, 4vw, 68px); bottom: 38px; left: clamp(40px, 4vw, 68px); margin: 0; padding-top: 18px; border-top: 1px solid rgba(17,17,15,.14); font-size: 15px; font-weight: 650; }
 
-.opening-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 70px; margin-top: 40px; align-items: center; }
-.change-board { padding: 0 0 0 34px; border-left: 1px solid rgba(17,17,15,.18); }
-.change-board > p { margin-bottom: 18px; color: #6f46d9; font-family: var(--font-mono); font-size: 10px; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
-.participant-roster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
-.participant-role { display: grid; padding: 13px 0 11px; border-top: 1px solid rgba(17,17,15,.13); grid-template-columns: 28px 1fr; align-items: baseline; }
-.participant-role span { color: #8b887f; font-family: var(--font-mono); font-size: 8px; }
-.participant-role strong { font-family: var(--font-display); font-size: 24px; font-weight: 500; letter-spacing: -.025em; line-height: 1; }
-.role-design span { color: #cf3d84; }
-.role-code span { color: #7954d8; }
-.role-security span { color: #16838a; }
-.role-ops span { color: #54943d; }
-.role-expert span { color: #c47a18; }
-.practice-shift { display: grid; margin-top: 26px; padding-top: 20px; border-top: 1px solid rgba(17,17,15,.18); grid-template-columns: .9fr 1.1fr; gap: 24px; }
-.practice-column small { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-size: 8px; font-weight: 650; letter-spacing: .09em; text-transform: uppercase; }
-.practice-obsolete small { color: #b84848; }
-.practice-obsolete s { display: block; margin-top: 7px; color: #77736b; font-size: 11px; line-height: 1.35; text-decoration-color: #d56666; text-decoration-thickness: 1px; }
-.practice-current { padding-left: 20px; border-left: 1px solid rgba(17,17,15,.13); }
-.practice-current small { color: #24804b; }
-.practice-current strong { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 500; letter-spacing: -.015em; line-height: 1.08; }
+.slide-1 { border-color: rgba(255,255,255,.08); background: radial-gradient(circle at 86% 12%, rgba(0,184,200,.16), transparent 26%), radial-gradient(circle at 74% 78%, rgba(121,84,216,.2), transparent 34%), #10110f; color: #f7f3ea; }
+.slide-1 .slide-kicker { color: #bca5ff; }
+.slide-1 .lead { color: #aaa79e; }
+.slide-1 .slide-thesis { border-color: rgba(255,255,255,.14); }
+.waterfall-opening { display: grid; min-height: 520px; grid-template-columns: 1.08fr .92fr; gap: clamp(36px, 5vw, 76px); align-items: center; }
+.waterfall-copy h1 { margin-top: 34px; }
+.participant-stream { margin-top: 42px; }
+.participant-stream small { display: block; margin-bottom: 12px; color: #858279; font-family: var(--font-mono); font-size: 8px; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
+.participant-stream p { display: flex; max-width: 580px; flex-wrap: wrap; align-items: center; gap: 8px; color: #e8e4db; font-family: var(--font-display); font-size: 19px; line-height: 1.25; }
+.participant-stream i { width: 4px; height: 4px; border-radius: 50%; background: #ec3f95; }
+.participant-stream i:nth-of-type(2) { background: #00b8c8; }
+.participant-stream i:nth-of-type(3) { background: #f4c735; }
+.participant-stream i:nth-of-type(4) { background: #7954d8; }
+.participant-stream i:nth-of-type(5) { background: #58ae4d; }
+.waterfall-visual { position: relative; height: 500px; }
+.waterfall-source { position: absolute; z-index: 4; top: 8px; right: 0; left: 0; text-align: center; }
+.waterfall-source small { display: block; margin-bottom: 10px; color: #a19e95; font-family: var(--font-mono); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+.waterfall-source s { margin: 0 8px; color: #d8d4ca; font-family: var(--font-display); font-size: 16px; text-decoration-color: #ff6b62; text-decoration-thickness: 1.5px; }
+.waterfall-ribbons { position: absolute; z-index: 2; top: 75px; left: 50%; width: 180px; height: 292px; transform: translateX(-50%); }
+.waterfall-ribbons i { position: absolute; top: 0; display: block; width: 34px; height: 280px; border-radius: 48% 52% 60% 40% / 7% 9% 91% 93%; background: linear-gradient(180deg, #00b8c8, #1469bd 45%, #7954d8); filter: drop-shadow(0 18px 22px rgba(0,0,0,.2)); animation: waterfallFlow 2.8s ease-in-out infinite; }
+.waterfall-ribbons i:nth-child(1) { left: 2px; height: 246px; transform: rotate(5deg); }
+.waterfall-ribbons i:nth-child(2) { top: 13px; left: 35px; height: 272px; background: linear-gradient(180deg, #1469bd, #7954d8 52%, #ec3f95); animation-delay: -.5s; }
+.waterfall-ribbons i:nth-child(3) { top: 4px; left: 70px; height: 286px; background: linear-gradient(180deg, #ec3f95, #ff6b2c 54%, #f4c735); animation-delay: -1s; }
+.waterfall-ribbons i:nth-child(4) { top: 18px; left: 105px; height: 258px; background: linear-gradient(180deg, #ff6b2c, #f4c735 50%, #58ae4d); animation-delay: -1.5s; }
+.waterfall-ribbons i:nth-child(5) { left: 138px; height: 238px; transform: rotate(-5deg); background: linear-gradient(180deg, #f4c735, #58ae4d 56%, #00b8c8); animation-delay: -2s; }
+.waterfall-pool { position: absolute; z-index: 3; right: 2%; bottom: 4px; left: 2%; height: 154px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0,184,200,.44), rgba(20,105,189,.3) 36%, rgba(121,84,216,.18) 60%, transparent 72%); }
+.waterfall-pool::before { position: absolute; top: 20px; right: 9%; left: 9%; height: 1px; content: ''; background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent); box-shadow: 0 18px 0 rgba(255,255,255,.18), 0 38px 0 rgba(255,255,255,.1); }
+.waterfall-pool small { position: absolute; top: 38px; left: 50%; width: max-content; transform: translateX(-50%); color: #dbd7ce; font-family: var(--font-mono); font-size: 7px; letter-spacing: .12em; text-transform: uppercase; }
+.waterfall-pool strong { position: absolute; color: white; font-family: var(--font-display); font-size: 18px; font-weight: 500; letter-spacing: -.02em; text-shadow: 0 2px 12px rgba(0,0,0,.3); }
+.pool-maintain { bottom: 33px; left: 4%; }
+.pool-security { right: 7%; bottom: 33px; }
+.pool-governance { bottom: 4px; left: 26%; }
+.pool-coordinate { right: 22%; bottom: 4px; }
+@keyframes waterfallFlow { 50% { transform: translateY(8px) scaleY(1.025); filter: drop-shadow(0 24px 28px rgba(0,0,0,.28)); } }
 
 .slide-2 { background: #121210; color: #f7f5ef; }
 .slide-2 .slide-kicker { color: #bba4ff; }
@@ -447,7 +459,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 
 @media (max-width: 1000px) {
   .slide-stage { aspect-ratio: auto; min-height: 760px; }
-  .opening-grid, .cheap-code-grid { gap: 36px; }
+  .waterfall-opening, .cheap-code-grid { gap: 36px; }
   .architecture-layout { grid-template-columns: .85fr 42px 1.15fr; gap: 12px; }
   .connection span { display: none; }
 }
@@ -461,8 +473,10 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .slide-stage h1 { font-size: 54px; }
   .slide-stage h2 { font-size: 46px; }
   .slide-thesis { position: static; margin-top: 38px; }
-  .opening-grid, .cheap-code-grid, .people-layout, .not-new-grid, .architecture-layout { grid-template-columns: 1fr; }
-  .change-board, .cheap-code-grid blockquote { margin-top: 8px; }
+  .waterfall-opening, .cheap-code-grid, .people-layout, .not-new-grid, .architecture-layout { grid-template-columns: 1fr; }
+  .waterfall-opening { min-height: 0; }
+  .waterfall-visual { height: 510px; margin-top: 10px; }
+  .cheap-code-grid blockquote { margin-top: 8px; }
   .after-code { flex-wrap: wrap; }
   .slide-heading-row { flex-direction: column; }
   .segmented-control { align-self: stretch; }
