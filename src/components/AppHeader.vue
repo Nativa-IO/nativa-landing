@@ -7,12 +7,14 @@
       </router-link>
 
       <nav class="main-nav" :aria-label="labels.navigation">
-        <a href="#vida">{{ labels.how }}</a>
-        <a href="#plataforma">{{ labels.product }}</a>
-        <a href="#formas">Cloud / Atlas</a>
+        <router-link :to="{ path: '/', hash: '#vida' }">{{ labels.how }}</router-link>
+        <router-link :to="{ path: '/', hash: '#plataforma' }">{{ labels.product }}</router-link>
+        <router-link :to="{ path: '/', hash: '#formas' }">Cloud / Atlas</router-link>
+        <router-link to="/content" class="content-link">Content</router-link>
       </nav>
 
       <div class="header-actions">
+        <router-link to="/content" class="mobile-content-link">Content</router-link>
         <div class="language-switch" :aria-label="labels.language">
           <button type="button" :class="{ active: locale === 'es' }" @click="setLocale('es')">ES</button>
           <button type="button" :class="{ active: locale === 'en' }" @click="setLocale('en')">EN</button>
@@ -80,10 +82,14 @@ const downloadUrl = computed(() => macUrl.value || windowsUrl.value || '#vida')
 .brand-symbol { width: 34px; height: 34px; object-fit: contain; }
 
 .main-nav { display: flex; align-items: center; gap: 30px; }
-.main-nav a { color: #55534d; font-size: 13px; font-weight: 540; text-decoration: none; transition: color 160ms ease; }
+.main-nav a { color: #55534d; font-size: 13px; font-weight: 540; text-decoration: none; transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease; }
 .main-nav a:hover { color: #11110f; }
+.main-nav .content-link { padding: 7px 13px; border: 1px solid rgba(17,17,15,0.13); border-radius: 999px; background: rgba(255,255,255,0.36); color: #11110f; }
+.main-nav .content-link:hover,
+.main-nav .content-link.router-link-active { border-color: rgba(17,17,15,0.25); background: white; }
 
 .header-actions { display: flex; align-items: center; justify-self: end; gap: 14px; }
+.mobile-content-link { display: none; min-height: 34px; align-items: center; padding: 0 13px; border: 1px solid rgba(17,17,15,.13); border-radius: 999px; color: #11110f; font-size: 11px; font-weight: 650; text-decoration: none; }
 .language-switch { display: inline-flex; padding: 3px; border: 1px solid rgba(17,17,15,0.11); border-radius: 999px; background: rgba(255,255,255,0.4); }
 .language-switch button { width: 34px; height: 28px; border: 0; border-radius: 999px; background: transparent; color: #77746b; cursor: pointer; font: inherit; font-size: 10px; font-weight: 700; }
 .language-switch button.active { background: white; color: #11110f; box-shadow: 0 2px 10px -6px rgba(17,17,15,0.5); }
@@ -93,6 +99,7 @@ const downloadUrl = computed(() => macUrl.value || windowsUrl.value || '#vida')
 @media (max-width: 860px) {
   .header-shell { grid-template-columns: 1fr auto; }
   .main-nav { display: none; }
+  .mobile-content-link { display: inline-flex; }
 }
 
 @media (max-width: 520px) {
@@ -100,5 +107,9 @@ const downloadUrl = computed(() => macUrl.value || windowsUrl.value || '#vida')
   .brand > span:last-child { display: none; }
   .header-actions { gap: 8px; }
   .header-cta { padding: 0 14px; }
+}
+
+@media (max-width: 430px) {
+  .header-cta { display: none; }
 }
 </style>

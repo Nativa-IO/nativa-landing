@@ -7,12 +7,21 @@ const routes = [
     component: () => import('../views/HomeView.vue'),
     meta: { title: 'Nativa | El trabajo de software, unido' },
   },
+  {
+    path: '/content',
+    name: 'content',
+    component: () => import('../views/ContentView.vue'),
+    meta: { title: 'Content | Nativa' },
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to) {
+    if (to.hash) {
+      return { el: to.hash, behavior: 'smooth' }
+    }
     return { top: 0 }
   },
 })
