@@ -274,8 +274,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .slide-thesis { position: absolute; right: clamp(40px, 4vw, 68px); bottom: 38px; left: clamp(40px, 4vw, 68px); margin: 0; padding-top: 18px; border-top: 1px solid rgba(17,17,15,.14); font-size: 15px; font-weight: 650; }
 
 .opening-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 70px; margin-top: 40px; align-items: center; }
-.change-board { padding: 30px; border: 1px solid rgba(17,17,15,.13); border-radius: 22px; background: #ece8df; }
-.change-board > p { margin-bottom: 18px; font-family: var(--font-mono); font-size: 10px; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
+.change-board { padding: 30px; border: 1px solid rgba(17,17,15,.1); border-radius: 22px; background: #fff; box-shadow: 0 26px 70px -52px rgba(17,17,15,.45); }
+.change-board > p { margin-bottom: 18px; color: #6f46d9; font-family: var(--font-mono); font-size: 10px; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
 .actor-chips { display: flex; flex-wrap: wrap; gap: 9px; }
 .actor-chips span { padding: 10px 14px; border: 1px solid rgba(17,17,15,.13); border-radius: 999px; background: #faf9f5; font-size: 13px; font-weight: 650; }
 .actor-chips span:nth-child(2) { border-color: #df9fc0; background: #f5dbe8; }
