@@ -20,15 +20,13 @@
               </div>
               <div class="change-board">
                 <p>Quienes participan</p>
-                <div class="participant-map" aria-label="CEO, diseño, programación, seguridad, operación y expertos alrededor del producto">
-                  <i class="map-line line-one" /><i class="map-line line-two" />
-                  <div class="product-core">El<br>producto</div>
-                  <div class="participant-node node-ceo"><span />CEO</div>
-                  <div class="participant-node node-design"><span />Diseño</div>
-                  <div class="participant-node node-code"><span />Programación</div>
-                  <div class="participant-node node-security"><span />Seguridad</div>
-                  <div class="participant-node node-ops"><span />Operación</div>
-                  <div class="participant-node node-expert"><span />Expertos</div>
+                <div class="participant-roster" aria-label="CEO, diseño, programación, seguridad, operación y expertos">
+                  <div class="participant-role role-ceo"><span>01</span><strong>CEO</strong></div>
+                  <div class="participant-role role-design"><span>02</span><strong>Diseño</strong></div>
+                  <div class="participant-role role-code"><span>03</span><strong>Programación</strong></div>
+                  <div class="participant-role role-security"><span>04</span><strong>Seguridad</strong></div>
+                  <div class="participant-role role-ops"><span>05</span><strong>Operación</strong></div>
+                  <div class="participant-role role-expert"><span>06</span><strong>Expertos</strong></div>
                 </div>
                 <div class="same-practices">
                   <small>Lo que sigue siendo necesario</small>
@@ -281,29 +279,18 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .slide-thesis { position: absolute; right: clamp(40px, 4vw, 68px); bottom: 38px; left: clamp(40px, 4vw, 68px); margin: 0; padding-top: 18px; border-top: 1px solid rgba(17,17,15,.14); font-size: 15px; font-weight: 650; }
 
 .opening-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 70px; margin-top: 40px; align-items: center; }
-.change-board { padding: 30px; border: 1px solid rgba(17,17,15,.1); border-radius: 22px; background: #fff; box-shadow: 0 26px 70px -52px rgba(17,17,15,.45); }
+.change-board { padding: 0 0 0 34px; border-left: 1px solid rgba(17,17,15,.18); }
 .change-board > p { margin-bottom: 18px; color: #6f46d9; font-family: var(--font-mono); font-size: 10px; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
-.participant-map { position: relative; height: 176px; }
-.participant-map::before, .participant-map::after, .map-line { position: absolute; top: 50%; left: 50%; display: block; width: 72%; height: 1px; content: ''; background: rgba(17,17,15,.13); transform: translate(-50%,-50%); }
-.participant-map::after { width: 1px; height: 82%; }
-.map-line.line-one { transform: translate(-50%,-50%) rotate(31deg); }
-.map-line.line-two { transform: translate(-50%,-50%) rotate(-31deg); }
-.product-core { position: absolute; z-index: 2; top: 50%; left: 50%; display: grid; width: 86px; height: 86px; place-items: center; transform: translate(-50%,-50%); border-radius: 50%; background: #11110f; color: white; font-family: var(--font-display); font-size: 17px; line-height: .9; text-align: center; }
-.participant-node { position: absolute; z-index: 3; display: flex; align-items: center; gap: 7px; color: #292823; font-size: 11px; font-weight: 700; }
-.participant-node span { display: block; width: 15px; height: 15px; border: 1px solid rgba(17,17,15,.12); border-radius: 3px; background: #f0a9cc; box-shadow: 0 0 0 4px white; }
-.node-ceo { top: 0; left: 5%; }
-.node-design { top: 0; right: 7%; }
-.node-code { top: 48%; right: 0; }
-.node-security { right: 7%; bottom: 0; }
-.node-ops { bottom: 0; left: 5%; }
-.node-expert { top: 48%; left: 0; }
-.node-ceo span { background: #c7d8ef; }
-.node-design span { background: #f0a9cc; }
-.node-code span { background: #dfc5ff; }
-.node-security span { background: #9edadd; }
-.node-ops span { background: #b9d7a4; }
-.node-expert span { background: #f3ce82; }
-.same-practices { margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(17,17,15,.13); }
+.participant-roster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+.participant-role { display: grid; padding: 13px 0 11px; border-top: 1px solid rgba(17,17,15,.13); grid-template-columns: 28px 1fr; align-items: baseline; }
+.participant-role span { color: #8b887f; font-family: var(--font-mono); font-size: 8px; }
+.participant-role strong { font-family: var(--font-display); font-size: 24px; font-weight: 500; letter-spacing: -.025em; line-height: 1; }
+.role-design span { color: #cf3d84; }
+.role-code span { color: #7954d8; }
+.role-security span { color: #16838a; }
+.role-ops span { color: #54943d; }
+.role-expert span { color: #c47a18; }
+.same-practices { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(17,17,15,.18); }
 .same-practices small, .same-practices strong { display: block; }
 .same-practices small { margin-bottom: 8px; color: var(--muted); font-size: 11px; }
 .same-practices strong { font-family: var(--font-display); font-size: 26px; font-weight: 500; line-height: 1.1; }
