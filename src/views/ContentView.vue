@@ -14,12 +14,7 @@
       <div class="shell decks-grid">
         <router-link to="/content/vision" class="deck-card deck-card-idea">
           <div class="slide-preview slide-idea" aria-hidden="true">
-            <div class="slide-brand">Nativa</div>
-            <p>{{ copy.ideaSlide }}</p>
-            <div class="idea-path">
-              <i /><i /><i /><i />
-            </div>
-            <span class="slide-number">01</span>
+            <img :src="asset('og.png')" alt="">
           </div>
           <div class="deck-copy">
             <div>
@@ -33,14 +28,24 @@
 
         <article class="deck-card deck-card-model">
           <div class="slide-preview slide-model" aria-hidden="true">
-            <div class="model-heading">
+            <div class="model-cover-copy">
               <span>Nativa</span>
-              <strong>Business model</strong>
+              <strong>Business<br>model.</strong>
+              <small>De una necesidad compartida<br>a un negocio sostenible.</small>
             </div>
-            <div class="model-grid">
-              <i /><i /><i /><i /><i /><i />
+            <div class="model-network">
+              <i class="network-line line-a" /><i class="network-line line-b" /><i class="network-line line-c" />
+              <span class="network-dot dot-a" /><span class="network-dot dot-b" /><span class="network-dot dot-c" />
+              <div class="network-card card-value"><b>Valor</b><i /><i /></div>
+              <div class="network-card card-client"><b>Cliente</b><i /><i /></div>
+              <div class="network-card card-revenue"><b>Ingreso</b><i /><i /></div>
+              <div class="network-person person-a">C</div>
+              <div class="network-person person-b">E</div>
+              <div class="network-person person-c">N</div>
             </div>
-            <span class="slide-number">02</span>
+            <span class="organic-circle organic-orange" />
+            <span class="organic-circle organic-yellow" />
+            <span class="organic-leaf leaf-a" /><span class="organic-leaf leaf-b" />
           </div>
           <div class="deck-copy">
             <div>
@@ -99,6 +104,7 @@ const content = {
 }
 
 const copy = computed(() => content[locale.value] ?? content.es)
+const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 </script>
 
 <style scoped>
@@ -133,29 +139,46 @@ const copy = computed(() => content[locale.value] ?? content.es)
 .decks-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .deck-card { overflow: hidden; border: 1px solid rgba(17,17,15,.13); border-radius: 24px; background: rgba(250,249,245,.76); color: inherit; text-decoration: none; box-shadow: 0 24px 70px -52px rgba(17,17,15,.5); transition: transform 180ms ease, box-shadow 180ms ease; }
 .deck-card-idea:hover { transform: translateY(-4px); box-shadow: 0 34px 80px -48px rgba(17,17,15,.55); }
-.slide-preview { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid rgba(17,17,15,.12); }
-.slide-number { position: absolute; right: 26px; bottom: 24px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; }
+.slide-preview { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid rgba(17,17,15,.12); background: #f6f0e4; }
+.slide-idea img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.slide-idea { padding: 34px; background: #11110f; color: #f8f6ef; }
-.slide-brand { font-size: 16px; font-weight: 750; letter-spacing: -.025em; }
-.slide-idea > p { max-width: 470px; margin: 74px 0 0; font-family: var(--font-display); font-size: clamp(34px, 3.2vw, 48px); font-weight: 500; letter-spacing: -.03em; line-height: 1.02; }
-.idea-path { position: absolute; right: 34px; bottom: 36px; left: 34px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.idea-path i { height: 5px; border-radius: 99px; background: #00b8c8; }
-.idea-path i:nth-child(2) { background: #ec3f95; }
-.idea-path i:nth-child(3) { background: #ff6b2c; }
-.idea-path i:nth-child(4) { background: #58ae4d; }
-.slide-idea .slide-number { bottom: 52px; color: rgba(255,255,255,.48); }
-
-.slide-model { padding: 34px; background: #e7e3db; }
-.model-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
-.model-heading span { font-size: 16px; font-weight: 750; letter-spacing: -.025em; }
-.model-heading strong { max-width: 300px; font-family: var(--font-display); font-size: clamp(38px, 4vw, 56px); font-weight: 500; letter-spacing: -.035em; line-height: .95; text-align: right; }
-.model-grid { position: absolute; right: 34px; bottom: 42px; left: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.model-grid i { height: 62px; border: 1px solid rgba(17,17,15,.14); border-radius: 10px; background: rgba(250,249,245,.72); }
-.model-grid i:nth-child(2) { background: #b9dcdb; }
-.model-grid i:nth-child(4) { background: #e7b4ce; }
-.model-grid i:nth-child(6) { background: #efd6a3; }
-.slide-model .slide-number { color: rgba(17,17,15,.5); }
+.slide-model {
+  padding: clamp(24px, 3vw, 40px);
+  background:
+    radial-gradient(circle at 22% 20%, rgba(191,154,90,.06), transparent 24%),
+    radial-gradient(circle at 78% 78%, rgba(26,107,111,.05), transparent 26%),
+    #f6f0e4;
+}
+.slide-model::after { position: absolute; inset: 0; content: ''; opacity: .16; background-image: radial-gradient(circle, rgba(90,74,50,.35) .55px, transparent .7px); background-size: 4px 4px; mix-blend-mode: multiply; pointer-events: none; }
+.model-cover-copy { position: relative; z-index: 4; width: 46%; }
+.model-cover-copy span { display: block; margin-bottom: clamp(28px, 4vw, 58px); font-size: clamp(16px, 2.1vw, 26px); font-weight: 800; letter-spacing: -.035em; }
+.model-cover-copy strong { display: block; font-family: var(--font-display); font-size: clamp(38px, 5.4vw, 72px); font-weight: 500; letter-spacing: -.045em; line-height: .84; }
+.model-cover-copy small { display: block; margin-top: clamp(18px, 2.8vw, 34px); color: #5f5a51; font-size: clamp(8px, 1.1vw, 13px); line-height: 1.45; }
+.model-network { position: absolute; z-index: 3; inset: 9% 2% 4% 45%; }
+.network-line { position: absolute; display: block; height: 1px; background: #24231f; transform-origin: left center; }
+.line-a { top: 27%; left: 9%; width: 66%; transform: rotate(15deg); }
+.line-b { top: 53%; left: 22%; width: 65%; transform: rotate(-22deg); }
+.line-c { top: 75%; left: 14%; width: 70%; transform: rotate(8deg); }
+.network-dot { position: absolute; z-index: 2; width: 17px; height: 17px; border-radius: 50%; background: #00aeb7; }
+.dot-a { top: 20%; left: 11%; }
+.dot-b { top: 48%; left: 51%; background: #f05a28; }
+.dot-c { right: 12%; bottom: 12%; background: #90a825; transform: rotate(45deg); border-radius: 2px; }
+.network-card { position: absolute; z-index: 2; width: 30%; min-width: 78px; padding: 10px; border: 1px solid rgba(71,62,48,.12); background: rgba(251,247,238,.92); box-shadow: 0 10px 24px -18px rgba(34,31,25,.65); }
+.network-card b { display: block; margin-bottom: 9px; font-size: clamp(7px, .9vw, 11px); }
+.network-card i { display: block; width: 78%; height: 3px; margin-top: 5px; border-radius: 10px; background: #d2c6b1; }
+.network-card i:last-child { width: 52%; }
+.card-value { top: 4%; left: 32%; }
+.card-client { top: 38%; right: 4%; }
+.card-revenue { bottom: 4%; left: 24%; }
+.network-person { position: absolute; z-index: 3; display: grid; width: clamp(34px, 5vw, 58px); height: clamp(34px, 5vw, 58px); place-items: center; border-radius: 50%; background: #d6e8e5; color: #155e64; font-family: var(--font-display); font-size: clamp(13px, 1.6vw, 21px); font-weight: 600; box-shadow: 0 8px 20px -16px #111; }
+.person-a { top: 0; right: 9%; }
+.person-b { top: 43%; left: 3%; background: #dce3ef; color: #285595; }
+.person-c { right: 0; bottom: 8%; background: #f2d7e4; color: #9c245f; }
+.organic-circle { position: absolute; z-index: 1; display: block; border-radius: 50%; }
+.organic-orange { top: -18%; right: -7%; width: 24%; aspect-ratio: 1; background: #f05a28; }
+.organic-yellow { bottom: -25%; left: -8%; width: 30%; aspect-ratio: 1; background: #eead2d; }
+.organic-leaf { position: absolute; z-index: 2; bottom: -14%; left: 3%; width: 9%; height: 38%; border-radius: 100% 0; background: #247854; transform: rotate(32deg); transform-origin: bottom center; }
+.leaf-b { left: 11%; height: 32%; transform: rotate(52deg); background: #3c8d64; }
 
 .deck-copy { display: flex; min-height: 250px; align-items: flex-end; justify-content: space-between; gap: 28px; padding: 30px; }
 .deck-copy > div { max-width: 440px; }
@@ -180,10 +203,7 @@ const copy = computed(() => content[locale.value] ?? content.es)
   .content-hero { padding: 132px 0 70px; }
   .content-hero h1 { font-size: 52px; }
   .intro { font-size: 16px; }
-  .slide-preview { aspect-ratio: 4 / 3; }
-  .slide-idea > p { margin-top: 52px; font-size: 34px; }
-  .model-heading strong { font-size: 38px; }
-  .model-grid i { height: 42px; }
+  .model-cover-copy span { margin-bottom: 24px; }
   .deck-copy { min-height: 0; align-items: flex-start; flex-direction: column; padding: 24px; }
 }
 </style>
