@@ -319,7 +319,7 @@ const content = {
     galleryBody: 'Cada persona encuentra proyectos, decisiones, pendientes y documentos en el mismo lugar. Menos saltos entre herramientas; más continuidad.',
     galleryItems: [
       { eyebrow: 'Proyectos', title: 'Siempre sabes dónde estás.', body: 'Trabajo activo, avances y versiones reunidos en una sola vista.' },
-      { eyebrow: 'Conocimiento', title: 'Las decisiones no se pierden.', body: 'Nativa conserva la memoria que ayuda a personas y agentes a trabajar mejor.' },
+      { eyebrow: 'Conocimiento', title: 'Las decisiones no se pierden.', body: 'Nativa conserva la memoria que ayuda a todo el equipo a trabajar mejor.' },
       { eyebrow: 'Colaboración', title: 'El trabajo pendiente tiene contexto.', body: 'Las ideas y problemas viven junto al proyecto que los necesita.' },
       { eyebrow: 'Documentos', title: 'Los archivos importantes permanecen cerca.', body: 'Referencias, datos y entregables viajan con el trabajo, no en conversaciones dispersas.' },
     ],
@@ -378,7 +378,7 @@ const content = {
     galleryBody: 'Everyone finds projects, decisions, pending work, and documents in the same place. Fewer tool switches; more continuity.',
     galleryItems: [
       { eyebrow: 'Projects', title: 'You always know where you are.', body: 'Active work, progress, and versions gathered in one place.' },
-      { eyebrow: 'Knowledge', title: 'Decisions do not get lost.', body: 'Nativa preserves the memory that helps people and agents work better.' },
+      { eyebrow: 'Knowledge', title: 'Decisions do not get lost.', body: 'Nativa preserves the memory that helps the whole team work better.' },
       { eyebrow: 'Collaboration', title: 'Pending work carries context.', body: 'Ideas and problems live next to the project that needs them.' },
       { eyebrow: 'Documents', title: 'Important files stay close.', body: 'References, data, and deliverables travel with the work, not through scattered conversations.' },
     ],
