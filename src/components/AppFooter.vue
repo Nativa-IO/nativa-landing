@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="footer-shell">
       <div class="footer-brand">
-        <span class="footer-mark">N</span>
+        <img :src="brandMarkUrl" alt="" class="footer-mark">
         <div>
           <strong>Nativa</strong>
           <p>{{ labels.tagline }}</p>
@@ -23,6 +23,7 @@ import { computed } from 'vue'
 import { useI18n } from '../composables/useI18n'
 
 const { locale } = useI18n()
+const brandMarkUrl = `${import.meta.env.BASE_URL}brand/nativa-mark.svg`
 const labels = computed(() => locale.value === 'es'
   ? { tagline: 'Software creado con IA, listo para la vida real.', how: 'Cómo funciona', product: 'Producto' }
   : { tagline: 'AI-built software, ready for real life.', how: 'How it works', product: 'Product' })
@@ -32,7 +33,7 @@ const labels = computed(() => locale.value === 'es'
 .site-footer { padding: 54px 0 42px; border-top: 1px solid rgba(17,17,15,0.12); background: #f1efe9; color: #11110f; }
 .footer-shell { display: grid; width: min(1240px, calc(100% - 48px)); margin: 0 auto; grid-template-columns: 1fr auto auto; align-items: center; gap: 54px; }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
-.footer-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; background: #11110f; color: white; font-size: 13px; font-weight: 800; }
+.footer-mark { width: 30px; height: 30px; object-fit: contain; }
 .footer-brand strong { display: block; font-size: 14px; }
 .footer-brand p { margin: 3px 0 0; color: #77746c; font-size: 12px; }
 .footer-links { display: flex; gap: 24px; }

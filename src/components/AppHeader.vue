@@ -2,7 +2,7 @@
   <header class="site-header">
     <div class="header-shell">
       <router-link to="/" class="brand" aria-label="Nativa">
-        <span class="brand-mark">N</span>
+        <img :src="brandMarkUrl" alt="" class="brand-symbol">
         <span>Nativa</span>
       </router-link>
 
@@ -32,6 +32,7 @@ import { useDownloads } from '../composables/useDownloads'
 
 const { locale, setLocale } = useI18n()
 const { macUrl, windowsUrl, macReady, windowsReady } = useDownloads()
+const brandMarkUrl = `${import.meta.env.BASE_URL}brand/nativa-mark.svg`
 
 const labels = computed(() => locale.value === 'es'
   ? { navigation: 'Navegación principal', language: 'Idioma', how: 'Cómo funciona', product: 'Producto', download: 'Descargar', explore: 'Conocer Nativa' }
@@ -76,18 +77,7 @@ const downloadUrl = computed(() => macUrl.value || windowsUrl.value || '#vida')
   text-decoration: none;
 }
 
-.brand-mark {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  border-radius: 9px;
-  background: linear-gradient(145deg, #a76dff, #7136cc);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 8px 18px -10px rgba(92,43,180,0.8);
-  color: white;
-  font-size: 13px;
-  font-weight: 800;
-}
+.brand-symbol { width: 27px; height: 27px; object-fit: contain; }
 
 .main-nav { display: flex; align-items: center; gap: 30px; }
 .main-nav a { color: #55534d; font-size: 13px; font-weight: 540; text-decoration: none; transition: color 160ms ease; }
