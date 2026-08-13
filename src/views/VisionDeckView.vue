@@ -212,33 +212,35 @@
                   </div>
                 </div>
 
-                <div class="network-owner">{{ infraMode === 'cloud' ? 'Red Nativa' : 'Propiedad del cliente' }}</div>
+                <div class="network-owner">{{ infraMode === 'cloud' ? 'Operación de Nativa' : 'Propiedad del cliente' }}</div>
 
-                <div class="nativa-hub">
-                  <img :src="asset('brand/nativa-mark.svg')" alt="">
-                  <span>{{ infraMode === 'cloud' ? 'Nativa opera aquí' : 'Nativa instala aquí' }}</span>
-                </div>
+                <div class="server-flow">
+                  <div class="nativa-gateway">
+                    <img :src="asset('brand/nativa-mark.svg')" alt="">
+                    <small>Nativa</small>
+                  </div>
+                  <div class="flow-wire wire-vault" aria-hidden="true"><i /></div>
+                  <div class="flow-wire wire-storage" aria-hidden="true"><i /></div>
+                  <div class="flow-wire wire-input-trunk" aria-hidden="true" />
+                  <div class="flow-wire wire-to-workbench" aria-hidden="true"><i /></div>
+                  <div class="flow-wire wire-to-production" aria-hidden="true"><i /></div>
 
-                <div class="route route-vault" aria-hidden="true"><i /></div>
-                <div class="route route-workbench" aria-hidden="true"><i /></div>
-                <div class="route route-storage" aria-hidden="true"><i /></div>
-                <div class="route route-production" aria-hidden="true"><i /></div>
-
-                <div class="server-node vault">
-                  <div class="server-orb"><span>V</span></div>
-                  <strong>Vault</strong><small>Secretos</small>
-                </div>
-                <div class="server-node workbench">
-                  <div class="server-orb"><span>W</span></div>
-                  <strong>Workbench</strong><small>Construcción y pruebas</small>
-                </div>
-                <div class="server-node storage">
-                  <div class="server-orb"><span>S</span></div>
-                  <strong>Storage</strong><small>Documentos</small>
-                </div>
-                <div class="server-node production">
-                  <div class="server-orb"><span>P</span></div>
-                  <strong>Producción</strong><small>Usuarios reales</small>
+                  <article class="server-module vault">
+                    <span class="module-icon">▣</span>
+                    <div><strong>Vault</strong><small>Secretos</small></div>
+                  </article>
+                  <article class="server-module storage">
+                    <span class="module-icon">□</span>
+                    <div><strong>Storage</strong><small>Documentos</small></div>
+                  </article>
+                  <article class="server-module workbench">
+                    <span class="module-icon">◇</span>
+                    <div><strong>Workbench</strong><small>Construcción y pruebas</small></div>
+                  </article>
+                  <article class="server-module production">
+                    <span class="module-icon">↗</span>
+                    <div><strong>Producción</strong><small>Usuarios reales</small></div>
+                  </article>
                 </div>
               </div>
             </div>
@@ -508,7 +510,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 
 .architecture-heading h2 { max-width: 760px; font-size: clamp(44px, 4.5vw, 64px); }
 .infra-control { margin-top: 6px; }
-.architecture-layout { position: relative; display: grid; min-height: 350px; margin-top: 22px; grid-template-columns: .72fr 1.28fr; gap: clamp(62px, 7vw, 94px); align-items: center; }
+.architecture-layout { position: relative; display: grid; min-height: 350px; margin-top: 22px; grid-template-columns: .72fr 70px 1.28fr; gap: 16px; align-items: center; }
 .desktop-side { position: relative; z-index: 4; }
 .diagram-label { margin-bottom: 12px; color: var(--muted); font-family: var(--font-mono); font-size: 8px; letter-spacing: .14em; text-align: center; text-transform: uppercase; }
 .mini-laptop { width: min(360px, 100%); margin: 0 auto; perspective: 900px; }
@@ -519,15 +521,13 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .laptop-base { position: relative; width: 112%; height: 18px; margin: -1px 0 0 -6%; border-radius: 2px 2px 18px 18px; background: linear-gradient(180deg, #dedfe1, #919398 58%, #c8c9cc); box-shadow: 0 15px 25px -18px rgba(17,17,15,.8); clip-path: polygon(5% 0, 95% 0, 100% 70%, 97% 100%, 3% 100%, 0 70%); }
 .laptop-base i { position: absolute; top: 1px; left: 50%; width: 21%; height: 4px; border-radius: 0 0 7px 7px; background: #74767b; transform: translateX(-50%); }
 .laptop-caption { margin: 17px 0 0; color: var(--muted); font-size: 10px; text-align: center; }
-.connection-rail { position: absolute; z-index: 5; top: 54%; left: 28%; width: 21%; height: 1px; background: linear-gradient(90deg, rgba(121,84,216,.2), #7954d8 45%, rgba(121,84,216,.32)); }
+.connection-rail { position: relative; z-index: 5; width: 100%; height: 1px; overflow: visible; background: linear-gradient(90deg, rgba(121,84,216,.2), #7954d8 45%, rgba(121,84,216,.32)); }
 .connection-rail span { position: absolute; top: -23px; left: 50%; width: max-content; color: #716b79; font-family: var(--font-mono); font-size: 7px; letter-spacing: .1em; text-transform: uppercase; transform: translateX(-50%); }
 .connection-rail i { position: absolute; top: -3px; left: 0; width: 48px; height: 7px; border-radius: 99px; background: linear-gradient(90deg, transparent, #9e83ee 35%, #f8f4ff 70%, transparent); filter: drop-shadow(0 0 7px #7954d8); animation: signalTravel 2.8s ease-in-out infinite; }
-.network-boundary { position: relative; min-height: 350px; overflow: hidden; border: 1.5px dashed #8d69e8; border-radius: 54px 84px 48px 72px; background: radial-gradient(circle at 12% 52%, rgba(121,84,216,.2), transparent 24%), radial-gradient(circle at 82% 76%, rgba(236,63,149,.1), transparent 31%), #eee9f8; box-shadow: 0 28px 70px -50px rgba(73,47,133,.62); transition: background 420ms ease, border-color 420ms ease, border-radius 420ms ease; }
-.network-boundary::before { position: absolute; inset: 12px; content: ''; border: 1px solid rgba(121,84,216,.1); border-radius: 45px 72px 42px 62px; pointer-events: none; }
-.network-boundary::after { position: absolute; right: 22px; bottom: -8px; content: 'NATIVA CLOUD'; color: rgba(121,84,216,.055); font-family: var(--font-display); font-size: 56px; font-weight: 700; letter-spacing: -.04em; white-space: nowrap; }
-.network-client { border-color: #228b88; border-radius: 36px 74px 58px 48px; background: radial-gradient(circle at 12% 52%, rgba(22,123,127,.18), transparent 24%), radial-gradient(circle at 85% 15%, rgba(244,199,53,.12), transparent 28%), #e3efec; box-shadow: 0 28px 70px -50px rgba(22,123,127,.56); }
-.network-client::before { border-color: rgba(22,123,127,.13); }
-.network-client::after { content: 'TU EMPRESA'; color: rgba(22,123,127,.06); }
+.network-boundary { position: relative; min-width: 0; min-height: 350px; overflow: clip; contain: layout paint; isolation: isolate; border: 1.5px dashed #8d69e8; border-radius: 26px; background: linear-gradient(145deg, #f0ecf8, #e8e3f3); box-shadow: 0 28px 70px -50px rgba(73,47,133,.62); transition: background 420ms ease, border-color 420ms ease; }
+.network-boundary::before { position: absolute; inset: 10px; content: ''; border: 1px solid rgba(121,84,216,.09); border-radius: 18px; pointer-events: none; }
+.network-client { border-color: #228b88; background: linear-gradient(145deg, #e9f2ef, #dcebe8); box-shadow: 0 28px 70px -50px rgba(22,123,127,.56); }
+.network-client::before { border-color: rgba(22,123,127,.12); }
 .network-label { position: absolute; z-index: 6; top: 20px; left: 22px; display: flex; align-items: center; gap: 10px; }
 .network-label div, .network-label strong, .network-label small { display: block; }
 .network-label strong { font-size: 12px; }
@@ -536,39 +536,42 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .network-client .network-emblem { background: #167b7f; box-shadow: 0 8px 22px -12px #167b7f; }
 .network-owner { position: absolute; z-index: 6; top: 29px; right: 25px; color: #7954d8; font-family: var(--font-mono); font-size: 7px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .network-client .network-owner { color: #167b7f; }
-.nativa-hub { position: absolute; z-index: 6; top: 53%; left: 8%; width: 88px; text-align: center; transform: translateY(-50%); }
-.nativa-hub img { display: block; width: 58px; height: 58px; margin: 0 auto; padding: 7px; object-fit: contain; border-radius: 50%; background: #faf8f2; box-shadow: 0 0 0 8px rgba(121,84,216,.12), 0 16px 28px -18px rgba(17,17,15,.65); animation: hubGlow 2.8s ease-in-out infinite; }
-.network-client .nativa-hub img { box-shadow: 0 0 0 8px rgba(22,123,127,.12), 0 16px 28px -18px rgba(17,17,15,.65); }
-.nativa-hub span { display: block; margin-top: 9px; color: #332d3c; font-size: 8px; font-weight: 750; }
-.route { position: absolute; z-index: 2; top: 53%; left: 15%; height: 1px; background: linear-gradient(90deg, #8f73dd, rgba(143,115,221,.24)); transform-origin: left center; }
-.network-client .route { background: linear-gradient(90deg, #218783, rgba(33,135,131,.2)); }
-.route i { position: absolute; top: -4px; left: 0; width: 8px; height: 8px; border: 2px solid white; border-radius: 50%; background: #7954d8; box-shadow: 0 0 10px 4px rgba(121,84,216,.46); opacity: 0; animation: routeTravel 5.6s ease-in-out infinite; }
-.network-client .route i { background: #167b7f; box-shadow: 0 0 10px 4px rgba(22,123,127,.4); }
-.route-vault { width: 29%; transform: rotate(-27deg); }
-.route-workbench { width: 72%; transform: rotate(-7deg); }
-.route-storage { width: 28%; transform: rotate(29deg); }
-.route-production { width: 70%; transform: rotate(12deg); }
-.route-workbench i { animation-delay: .7s; }
-.route-storage i { animation-delay: 1.4s; }
-.route-production i { animation-delay: 2.1s; }
-.server-node { position: absolute; z-index: 5; width: 124px; }
-.server-node strong, .server-node small { display: block; }
-.server-node strong { margin-top: 8px; font-size: 10px; }
-.server-node small { margin-top: 2px; color: var(--muted); font-size: 8px; }
-.server-orb { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid rgba(121,84,216,.2); border-radius: 50%; background: rgba(250,249,245,.94); color: #7954d8; box-shadow: 0 12px 24px -18px rgba(17,17,15,.6); animation: serverWake 5.6s ease-in-out infinite; }
-.server-orb span { font-family: var(--font-mono); font-size: 10px; font-weight: 800; }
-.server-node.vault { top: 84px; left: 39%; }
-.server-node.workbench { top: 111px; right: 3%; }
-.server-node.storage { bottom: 27px; left: 36%; }
-.server-node.production { right: 7%; bottom: 24px; }
-.workbench .server-orb { color: #1469bd; animation-delay: .7s; }
-.storage .server-orb { color: #00a3a9; animation-delay: 1.4s; }
-.production .server-orb { color: #328a42; animation-delay: 2.1s; }
+.server-flow { position: absolute; z-index: 3; inset: 72px 20px 18px; min-width: 0; overflow: hidden; contain: layout paint; }
+.nativa-gateway { position: absolute; z-index: 5; top: 50%; left: 0; width: 54px; transform: translateY(-50%); text-align: center; }
+.nativa-gateway img { display: block; width: 46px; height: 46px; padding: 6px; border: 1px solid rgba(121,84,216,.25); border-radius: 12px; background: #faf8f2; object-fit: contain; box-shadow: 0 12px 25px -18px rgba(17,17,15,.7); }
+.nativa-gateway small { display: block; margin-top: 5px; color: #5f5966; font-size: 7px; font-weight: 750; }
+.flow-wire { position: absolute; z-index: 1; border-color: rgba(121,84,216,.38); border-style: solid; pointer-events: none; }
+.network-client .flow-wire { border-color: rgba(22,123,127,.38); }
+.flow-wire i { position: absolute; display: block; width: 26px; height: 5px; border-radius: 99px; background: linear-gradient(90deg, transparent, #a787ff, white, transparent); filter: drop-shadow(0 0 5px #7954d8); opacity: 0; animation: containedPulse 5.2s linear infinite; }
+.network-client .flow-wire i { background: linear-gradient(90deg, transparent, #2aa6a2, white, transparent); filter: drop-shadow(0 0 5px #167b7f); }
+.wire-input-trunk { top: 50%; left: 46px; width: calc(12% - 46px); height: 1px; border-width: 1px 0 0; }
+.wire-vault { top: 18%; left: 12%; width: 8%; height: 32%; border-width: 0 1px 1px 0; }
+.wire-storage { top: 50%; left: 12%; width: 8%; height: 32%; border-width: 1px 1px 0 0; }
+.wire-vault i { right: -13px; bottom: -3px; animation-delay: .45s; }
+.wire-storage i { right: -13px; top: -3px; animation-delay: .8s; }
+.wire-to-workbench { top: 18%; left: calc(20% + 116px); width: calc(53% - 20% - 116px); height: 64%; border-width: 1px 1px 1px 0; }
+.wire-to-workbench i { top: calc(50% - 3px); right: -13px; animation-delay: 1.75s; }
+.wire-to-production { top: 50%; left: calc(53% + 140px); right: 116px; height: 1px; border-width: 1px 0 0; }
+.wire-to-production i { top: -3px; left: 0; animation-delay: 3s; }
+.server-module { position: absolute; z-index: 4; display: flex; width: 116px; min-height: 66px; padding: 11px; align-items: center; gap: 9px; border: 1px solid rgba(121,84,216,.18); border-radius: 12px; background: rgba(250,249,245,.92); color: #332e38; box-shadow: 0 13px 24px -21px rgba(17,17,15,.75); animation: moduleWake 5.2s ease-in-out infinite; }
+.server-module strong, .server-module small { display: block; }
+.server-module strong { font-size: 9px; }
+.server-module small { margin-top: 3px; color: #77717a; font-size: 7px; line-height: 1.2; }
+.module-icon { display: grid; width: 28px; height: 28px; flex: 0 0 auto; place-items: center; border-radius: 8px; background: #eee8fa; color: #7954d8; font-size: 13px; }
+.server-module.vault { top: 18%; left: 20%; transform: translateY(-50%); animation-delay: .8s; }
+.server-module.storage { top: 82%; left: 20%; transform: translateY(-50%); animation-delay: 1.15s; }
+.server-module.workbench { top: 50%; left: 53%; width: 140px; min-height: 82px; transform: translateY(-50%); animation-delay: 2.25s; }
+.server-module.production { top: 50%; right: 0; transform: translateY(-50%); animation-delay: 3.55s; }
+.server-module.workbench .module-icon { background: #e2edf8; color: #1469bd; }
+.server-module.storage .module-icon { background: #dff0ef; color: #008f96; }
+.server-module.production .module-icon { background: #e2f0e4; color: #328a42; }
+.network-client .server-module { border-color: rgba(22,123,127,.18); animation-name: moduleWakeClient; }
+.network-client .nativa-gateway img { border-color: rgba(22,123,127,.28); }
 .architecture-caption { max-width: 820px; margin: 16px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
 @keyframes signalTravel { 0% { left: 0; opacity: 0; } 12% { opacity: 1; } 76% { left: calc(100% - 48px); opacity: 1; } 100% { left: calc(100% - 48px); opacity: 0; } }
-@keyframes routeTravel { 0%, 10% { left: 0; opacity: 0; } 16% { opacity: 1; } 38% { left: calc(100% - 8px); opacity: 1; } 44%, 100% { left: calc(100% - 8px); opacity: 0; } }
-@keyframes serverWake { 0%, 30%, 100% { border-color: rgba(121,84,216,.2); background: rgba(250,249,245,.94); box-shadow: 0 12px 24px -18px rgba(17,17,15,.6); transform: scale(1); } 38%, 50% { border-color: currentColor; background: white; box-shadow: 0 0 0 8px rgba(121,84,216,.11), 0 0 28px 4px rgba(121,84,216,.38); transform: scale(1.08); } }
-@keyframes hubGlow { 50% { transform: scale(1.05); filter: brightness(1.06); } }
+@keyframes containedPulse { 0%, 10% { opacity: 0; transform: translateX(-18px); } 16%, 30% { opacity: 1; } 42%, 100% { opacity: 0; transform: translateX(18px); } }
+@keyframes moduleWake { 0%, 23%, 100% { border-color: rgba(121,84,216,.18); background: rgba(250,249,245,.92); box-shadow: 0 13px 24px -21px rgba(17,17,15,.75); } 31%, 42% { border-color: rgba(121,84,216,.7); background: #fff; box-shadow: 0 0 0 4px rgba(121,84,216,.1), 0 0 22px rgba(121,84,216,.25); } }
+@keyframes moduleWakeClient { 0%, 23%, 100% { border-color: rgba(22,123,127,.18); background: rgba(250,249,245,.92); box-shadow: 0 13px 24px -21px rgba(17,17,15,.75); } 31%, 42% { border-color: rgba(22,123,127,.72); background: #fff; box-shadow: 0 0 0 4px rgba(22,123,127,.1), 0 0 22px rgba(22,123,127,.24); } }
 
 .deck-controls { position: fixed; z-index: 20; right: 0; bottom: 20px; left: 0; display: flex; width: max-content; margin: 0 auto; align-items: center; gap: 16px; padding: 8px; border: 1px solid rgba(17,17,15,.14); border-radius: 999px; background: rgba(250,249,245,.9); box-shadow: 0 18px 50px -30px rgba(17,17,15,.65); backdrop-filter: blur(18px); }
 .deck-controls > button { width: 38px; height: 38px; border: 0; border-radius: 50%; background: #11110f; color: white; cursor: pointer; font-size: 16px; }
@@ -588,8 +591,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .waterfall-opening, .cheap-code-grid { gap: 36px; }
   .benefits-layout { gap: 24px; grid-template-columns: .66fr 1.34fr; }
   .benefit-item { width: 155px; }
-  .architecture-layout { grid-template-columns: .7fr 1.3fr; gap: 54px; }
-  .connection-rail { left: 27%; width: 22%; }
+  .architecture-layout { grid-template-columns: .7fr 48px 1.3fr; gap: 12px; }
   .connection-rail span { display: none; }
 }
 
@@ -647,21 +649,22 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .connection-rail { position: relative; top: auto; left: auto; width: 70px; margin: 34px 0; justify-self: center; transform: rotate(90deg); }
   .network-boundary { min-height: 500px; }
   .network-owner { display: none; }
-  .nativa-hub { left: 3%; }
-  .server-node.vault { top: 94px; left: 38%; }
-  .server-node.workbench { top: 184px; right: 0; }
-  .server-node.storage { bottom: 82px; left: 34%; }
-  .server-node.production { right: 2%; bottom: 14px; }
-  .route-vault { width: 37%; transform: rotate(-38deg); }
-  .route-workbench { width: 77%; transform: rotate(-9deg); }
-  .route-storage { width: 34%; transform: rotate(30deg); }
-  .route-production { width: 75%; transform: rotate(18deg); }
+  .server-flow { inset: 82px 14px 18px; }
+  .server-flow::before { position: absolute; top: 48px; bottom: 48px; left: 50%; width: 1px; content: ''; background: rgba(121,84,216,.35); }
+  .server-flow::after { position: absolute; top: 30%; right: 14%; left: 14%; height: 1px; content: ''; background: rgba(121,84,216,.35); }
+  .network-client .server-flow::before, .network-client .server-flow::after { background: rgba(22,123,127,.35); }
+  .nativa-gateway { top: 0; left: 50%; transform: translateX(-50%); }
+  .flow-wire { display: none; }
+  .server-module.vault { top: 30%; left: 0; transform: translateY(-50%); }
+  .server-module.storage { top: 30%; right: 0; left: auto; transform: translateY(-50%); }
+  .server-module.workbench { top: 63%; left: 50%; transform: translate(-50%, -50%); }
+  .server-module.production { top: auto; right: auto; bottom: 0; left: 50%; transform: translateX(-50%); }
   .architecture-caption { margin-top: 30px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .slide-forward-enter-active, .slide-forward-leave-active, .slide-back-enter-active, .slide-back-leave-active { transition: none; }
-  .travel-light, .connection-rail i, .route i, .server-orb, .nativa-hub img { animation: none; }
+  .travel-light, .connection-rail i, .flow-wire i, .server-module { animation: none; }
 }
 
 @keyframes imaginedTravelMobile { 0% { top: 80px; opacity: 0; background: #00b8c8; } 8% { opacity: 1; } 78% { top: calc(100% - 84px); opacity: 1; background: #f4c735; } 100% { top: calc(100% - 84px); opacity: 0; } }
