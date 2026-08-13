@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Nativa — master para app launcher</title>
+  <desc id="desc">N negra con una franja alebrije diagonal, centrada sobre un fondo marfil opaco y sin máscara de esquinas.</desc>
+  <defs>
+    <linearGradient id="alebrije" gradientUnits="userSpaceOnUse" x1="106" y1="80" x2="406" y2="432">
+      <stop offset="0" stop-color="#00B8C8"/><stop offset=".16" stop-color="#00B8C8"/>
+      <stop offset=".161" stop-color="#1F6FD1"/><stop offset=".33" stop-color="#1F6FD1"/>
+      <stop offset=".331" stop-color="#EC3F95"/><stop offset=".5" stop-color="#EC3F95"/>
+      <stop offset=".501" stop-color="#FF6B2C"/><stop offset=".67" stop-color="#FF6B2C"/>
+      <stop offset=".671" stop-color="#F4C735"/><stop offset=".84" stop-color="#F4C735"/>
+      <stop offset=".841" stop-color="#58AE4D"/><stop offset="1" stop-color="#58AE4D"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="#F5F3ED"/>
+  <rect x="72" y="72" width="102" height="368" fill="#080807"/>
+  <rect x="338" y="72" width="102" height="368" fill="#080807"/>
+  <path d="M72 72h102l266 368H338L72 72Z" fill="#080807"/>
+  <path d="M111 72h32l258 368h-32L111 72Z" fill="url(#alebrije)"/>
+</svg>

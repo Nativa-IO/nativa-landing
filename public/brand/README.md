@@ -10,5 +10,7 @@
 - `nativa-app-icon.svg`: current app icon; it matches the diagonal version.
 - `nativa-mark.png`: raster mark for interfaces that do not accept SVG.
 - `nativa-app-icon.png`: 1024 px raster master for desktop icon exports.
+- `nativa-launcher-master.svg` and `.png`: opaque 1024 px source without rounded corners, border, or shadow. Upload this file to app-launcher generators.
+- `nativa-launcher-master-full.svg` and `.png`: alternate opaque launcher source with the alebrije line following all three strokes.
 
 The center stroke uses the alebrije palette: turquoise, blue, magenta, orange, yellow, and green. Keep the N black and do not recolor its two vertical stems.

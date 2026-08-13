@@ -59,6 +59,44 @@
       </div>
     </section>
 
+    <section id="brand-assets" class="brand-assets-section">
+      <div class="brand-grid" aria-hidden="true" />
+      <div class="shell brand-assets-layout">
+        <div class="brand-assets-copy">
+          <p class="eyebrow">Brand assets</p>
+          <h2>{{ copy.brandTitle }}</h2>
+          <p>{{ copy.brandBody }}</p>
+
+          <div class="asset-downloads">
+            <a :href="asset('brand/nativa-launcher-master.png')" download="nativa-launcher-master-1024.png" class="asset-download asset-download-primary">
+              <span>PNG</span>
+              <strong>{{ copy.downloadLauncher }}</strong>
+              <small>1024 × 1024 px</small>
+              <b aria-hidden="true">↓</b>
+            </a>
+            <a :href="asset('brand/nativa-launcher-master.svg')" download="nativa-launcher-master.svg" class="asset-download">
+              <span>SVG</span>
+              <strong>{{ copy.downloadVector }}</strong>
+              <small>{{ copy.editable }}</small>
+              <b aria-hidden="true">↓</b>
+            </a>
+          </div>
+
+          <div class="secondary-asset-links">
+            <a :href="asset('brand/nativa-mark.png')" download="nativa-logo-transparent.png">{{ copy.transparentLogo }} →</a>
+            <a :href="asset('brand/nativa-launcher-master-full.png')" download="nativa-launcher-master-full-1024.png">{{ copy.fullLineLogo }} →</a>
+          </div>
+        </div>
+
+        <div class="launcher-preview">
+          <div class="launcher-orbit orbit-a" aria-hidden="true" />
+          <div class="launcher-orbit orbit-b" aria-hidden="true" />
+          <img :src="asset('brand/nativa-launcher-master.png')" :alt="copy.logoAlt">
+          <p><span>{{ copy.recommended }}</span><strong>PNG · 1024 px</strong></p>
+        </div>
+      </div>
+    </section>
+
     <section class="content-note">
       <div class="shell note-layout">
         <p class="eyebrow">{{ copy.nextLabel }}</p>
@@ -84,6 +122,15 @@ const content = {
     ideaBody: 'El problema, la visión y la forma en que Nativa reúne a todas las personas que participan en construir software.',
     modelBody: 'La oportunidad, los clientes, la propuesta de valor y las decisiones que sostienen el crecimiento de Nativa.',
     open: 'Abrir deck →',
+    brandTitle: 'El logo listo para convertirse en icono de app.',
+    brandBody: 'Descarga el PNG cuadrado y súbelo directamente al generador de app launcher. Es opaco y no tiene esquinas preaplicadas: la página generará los tamaños y recortes.',
+    downloadLauncher: 'Descargar para app launcher',
+    downloadVector: 'Descargar archivo maestro',
+    editable: 'Vector editable',
+    transparentLogo: 'Descargar logo sin fondo',
+    fullLineLogo: 'Versión con línea completa',
+    recommended: 'Archivo recomendado',
+    logoAlt: 'Icono cuadrado de Nativa con una N negra y una franja de colores alebrije',
     nextLabel: 'Siguiente paso',
     nextBody: 'Las presentaciones de visión y business model ya se pueden recorrer. El siguiente paso es conectar las cifras reales y preparar versiones descargables para compartir.',
   },
@@ -96,6 +143,15 @@ const content = {
     ideaBody: 'The problem, the vision, and how Nativa brings together everyone involved in building software.',
     modelBody: 'The opportunity, customers, value proposition, and decisions that support Nativa’s growth.',
     open: 'Open deck →',
+    brandTitle: 'The logo, ready to become an app icon.',
+    brandBody: 'Download the square PNG and upload it directly to an app launcher generator. It is opaque with no corner mask, so the generator can create the correct sizes and crops.',
+    downloadLauncher: 'Download for app launcher',
+    downloadVector: 'Download master file',
+    editable: 'Editable vector',
+    transparentLogo: 'Download transparent logo',
+    fullLineLogo: 'Full-line alternative',
+    recommended: 'Recommended file',
+    logoAlt: 'Square Nativa icon with a black N and a colorful alebrije stripe',
     nextLabel: 'Next step',
     nextBody: 'The vision and business model presentations are ready to explore. Next, we will connect the actual figures and prepare downloadable versions to share.',
   },
@@ -186,6 +242,33 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 .status { flex: 0 0 auto; padding: 8px 12px; border: 1px solid rgba(17,17,15,.13); border-radius: 999px; color: #67665f; font-size: 11px; font-weight: 650; }
 .status-ready { border-color: #11110f; background: #11110f; color: white; }
 
+.brand-assets-section { position: relative; overflow: hidden; padding: 110px 0; background: radial-gradient(circle at 82% 20%, rgba(0,184,200,.14), transparent 26%), radial-gradient(circle at 12% 100%, rgba(121,84,216,.2), transparent 30%), #121210; color: #f8f6ef; }
+.brand-grid { position: absolute; inset: 0; opacity: .34; background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg, black, transparent 82%); pointer-events: none; }
+.brand-assets-layout { display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(50px, 8vw, 120px); align-items: center; }
+.brand-assets-copy { position: relative; z-index: 2; }
+.brand-assets-copy .eyebrow { color: #bca5ff; }
+.brand-assets-copy h2 { max-width: 700px; margin: 22px 0 0; font-family: var(--font-display); font-size: clamp(48px, 5.3vw, 72px); font-weight: 500; letter-spacing: -.04em; line-height: .98; }
+.brand-assets-copy > p:not(.eyebrow) { max-width: 600px; margin: 26px 0 0; color: #aaa79e; font-size: 15px; line-height: 1.7; }
+.asset-downloads { max-width: 680px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,.16); }
+.asset-download { display: grid; padding: 18px 0; grid-template-columns: 48px 1fr auto 26px; gap: 16px; align-items: center; border-bottom: 1px solid rgba(255,255,255,.16); color: inherit; text-decoration: none; transition: padding 180ms ease, color 180ms ease; }
+.asset-download:hover { padding-right: 8px; padding-left: 8px; color: #fff; }
+.asset-download > span { color: #bca5ff; font-family: var(--font-mono); font-size: 8px; font-weight: 700; letter-spacing: .13em; }
+.asset-download-primary > span { color: #5fd0cb; }
+.asset-download > strong { font-size: 13px; }
+.asset-download > small { color: #77736f; font-size: 9px; }
+.asset-download > b { color: #f4c735; font-size: 18px; text-align: right; }
+.secondary-asset-links { display: flex; margin-top: 22px; flex-wrap: wrap; gap: 14px 28px; }
+.secondary-asset-links a { color: #aaa79e; font-size: 10px; font-weight: 650; text-decoration: none; }
+.secondary-asset-links a:hover { color: white; }
+.launcher-preview { position: relative; display: grid; min-height: 430px; place-items: center; align-content: center; }
+.launcher-preview > img { position: relative; z-index: 3; display: block; width: min(330px, 76%); aspect-ratio: 1; border-radius: 27%; object-fit: contain; filter: drop-shadow(0 36px 48px rgba(0,0,0,.42)); transform: rotate(2deg); }
+.launcher-preview > p { position: relative; z-index: 3; display: flex; margin: 26px 0 0; align-items: center; gap: 12px; }
+.launcher-preview > p span { color: #77736f; font-family: var(--font-mono); font-size: 7px; letter-spacing: .12em; text-transform: uppercase; }
+.launcher-preview > p strong { font-size: 10px; }
+.launcher-orbit { position: absolute; z-index: 1; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; }
+.orbit-a { width: 390px; height: 390px; }
+.orbit-b { width: 510px; height: 300px; border-color: rgba(188,165,255,.11); transform: rotate(-22deg); }
+
 .content-note { padding: 86px 0 100px; background: #121210; color: #f8f6ef; }
 .note-layout { display: grid; grid-template-columns: .35fr 1fr; gap: 90px; align-items: start; }
 .note-layout > p:last-child { max-width: 760px; margin: 0; font-family: var(--font-display); font-size: clamp(34px, 4vw, 52px); font-weight: 500; letter-spacing: -.025em; line-height: 1.08; }
@@ -193,6 +276,8 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 @media (max-width: 860px) {
   .decks-grid { grid-template-columns: 1fr; }
   .content-hero h1 { font-size: clamp(54px, 12vw, 78px); }
+  .brand-assets-layout { grid-template-columns: 1fr; }
+  .launcher-preview { min-height: 370px; }
   .note-layout { grid-template-columns: 1fr; gap: 34px; }
 }
 
@@ -203,5 +288,12 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
   .intro { font-size: 16px; }
   .model-cover-copy span { margin-bottom: 24px; }
   .deck-copy { min-height: 0; align-items: flex-start; flex-direction: column; padding: 24px; }
+  .brand-assets-section { padding: 82px 0; }
+  .brand-assets-copy h2 { font-size: 48px; }
+  .asset-download { grid-template-columns: 42px 1fr 22px; gap: 10px; }
+  .asset-download > small { display: none; }
+  .launcher-preview { min-height: 330px; }
+  .orbit-a { width: 290px; height: 290px; }
+  .orbit-b { width: 350px; height: 220px; }
 }
 </style>
