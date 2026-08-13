@@ -79,8 +79,11 @@
             <div class="lifecycle-path" :class="`lifecycle-${lifecycleMode}`">
               <p class="lifecycle-story">{{ lifecycleMode === 'linear' ? 'La historia que parece terminar al entregar.' : 'Lo que sucede cuando el software conoce a sus usuarios.' }}</p>
 
-              <div class="linear-track" aria-hidden="true"><i /></div>
-              <div class="travel-light" aria-hidden="true" />
+              <div class="linear-track" aria-hidden="true" />
+              <div class="path-pulse pulse-main" aria-hidden="true" />
+              <div class="path-pulse pulse-down" aria-hidden="true" />
+              <div class="path-pulse pulse-back" aria-hidden="true" />
+              <div class="path-pulse pulse-return" aria-hidden="true" />
 
               <div class="path-stage requirements">
                 <span>01</span><strong>Requerimientos</strong><small>Definir</small>
@@ -408,13 +411,15 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .lifecycle-switch button.active::after { transform: scaleX(1); }
 .lifecycle-path { position: relative; height: 350px; margin-top: 16px; }
 .lifecycle-story { position: absolute; z-index: 5; top: 20px; left: 0; margin: 0; color: #77747b; font-family: var(--font-mono); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
-.linear-track { position: absolute; z-index: 1; top: 176px; right: 5%; left: 4%; height: 3px; overflow: visible; border-radius: 99px; background: linear-gradient(90deg, #00b8c8, #1469bd 26%, #7954d8 53%, #ec3f95 77%, #f4c735); box-shadow: 0 0 18px rgba(121,84,216,.34); transition: right 520ms ease; }
-.linear-track::before, .linear-track::after { position: absolute; top: -4px; width: 11px; height: 11px; content: ''; border-radius: 50%; background: currentColor; box-shadow: 0 0 16px currentColor; }
-.linear-track::before { left: 0; color: #00b8c8; }
-.linear-track::after { right: 0; color: #f4c735; }
-.travel-light { position: absolute; z-index: 4; top: 172px; left: 4%; width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; background: #00b8c8; box-shadow: 0 0 18px 5px rgba(0,184,200,.55); animation: imaginedTravel 3.6s ease-in-out infinite; }
+.linear-track { position: absolute; z-index: 1; top: 176px; right: 4%; left: 4%; height: 3px; overflow: visible; border-radius: 99px; background: linear-gradient(90deg, #00b8c8, #1469bd 26%, #7954d8 53%, #ec3f95 77%, #f4c735); box-shadow: 0 0 18px rgba(121,84,216,.34); }
+.path-pulse { position: absolute; z-index: 7; width: 12px; height: 12px; border: 2px solid white; border-radius: 50%; opacity: 0; pointer-events: none; }
+.pulse-main { top: 171px; left: calc(4% - 6px); background: #00b8c8; box-shadow: 0 0 18px 5px rgba(0,184,200,.52); }
+.pulse-down { top: 171px; left: calc(96% - 6px); background: #f4c735; box-shadow: 0 0 18px 5px rgba(244,199,53,.5); }
+.pulse-back { top: 271px; left: calc(96% - 6px); background: #ec3f95; box-shadow: 0 0 18px 5px rgba(236,63,149,.48); }
+.pulse-return { top: 271px; left: calc(54% - 6px); background: #a77ee9; box-shadow: 0 0 18px 5px rgba(167,126,233,.5); }
+.lifecycle-linear .pulse-main { animation: linearPulse 3.8s ease-in-out infinite; }
 .path-stage { position: absolute; z-index: 4; top: 109px; width: 200px; }
-.path-stage::after { position: absolute; bottom: -29px; left: 0; width: 10px; height: 10px; content: ''; border: 2px solid #111114; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px rgba(255,255,255,.04), 0 0 15px currentColor; }
+.path-stage::after { position: absolute; top: 63px; left: -5px; width: 10px; height: 10px; box-sizing: border-box; content: ''; border: 2px solid #111114; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px rgba(255,255,255,.04), 0 0 15px currentColor; }
 .path-stage span, .path-stage strong, .path-stage small { display: block; }
 .path-stage span { margin-bottom: 10px; color: currentColor; font-family: var(--font-mono); font-size: 8px; letter-spacing: .1em; }
 .path-stage strong { color: #f7f3eb; font-family: var(--font-display); font-size: clamp(23px, 2.1vw, 31px); font-weight: 500; letter-spacing: -.025em; line-height: .95; }
@@ -422,32 +427,41 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .path-stage.requirements { left: 4%; color: #00b8c8; }
 .path-stage.design { left: 29%; color: #397dd1; }
 .path-stage.build { left: 54%; color: #a77ee9; }
-.path-stage.first-release { right: 0; color: #f4c735; }
+.path-stage.first-release { right: 4%; color: #f4c735; text-align: right; }
+.path-stage.first-release::after { right: -5px; left: auto; }
 .imagined-finish { position: absolute; z-index: 3; right: 0; bottom: 25px; color: rgba(247,243,235,.07); font-family: var(--font-display); font-size: 98px; font-weight: 700; letter-spacing: -.06em; transition: opacity 280ms ease, transform 400ms ease; }
 .imagined-finish span { color: rgba(244,199,53,.24); }
-.reality-loop, .reality-stage { opacity: 0; pointer-events: none; transition: opacity 320ms ease, transform 460ms ease; }
-.reality-loop { position: absolute; z-index: 1; top: 176px; right: 3.7%; left: 53%; height: 148px; transform: translateY(-10px); }
+.reality-loop, .reality-stage { opacity: 0; pointer-events: none; transition: opacity 320ms ease; }
+.reality-loop { position: absolute; z-index: 1; top: 176px; right: 4%; left: 54%; height: 130px; }
 .reality-loop i { position: absolute; display: block; }
-.loop-down { top: 0; right: 0; width: 3px; height: 104px; border-radius: 0 0 99px 99px; background: linear-gradient(#f4c735, #58ae4d); }
-.loop-bottom { right: 0; bottom: 40px; width: 100%; height: 3px; border-radius: 99px; background: linear-gradient(90deg, #7954d8, #ec3f95, #58ae4d); }
-.loop-up { bottom: 40px; left: 0; width: 3px; height: 44px; border-radius: 99px 99px 0 0; background: linear-gradient(#7954d8, #a77ee9); }
-.reality-stage { position: absolute; z-index: 4; bottom: 2px; transform: translateY(12px); }
-.reality-stage i { display: block; width: 9px; height: 9px; margin-bottom: 9px; border-radius: 50%; background: currentColor; box-shadow: 0 0 16px currentColor; }
+.loop-down { top: 0; right: 0; width: 3px; height: 100px; border-radius: 0 0 99px 99px; background: linear-gradient(#f4c735, #58ae4d); }
+.loop-bottom { top: 100px; right: 0; width: 100%; height: 3px; border-radius: 99px; background: linear-gradient(90deg, #7954d8, #ec3f95, #58ae4d); }
+.loop-up { top: 0; left: 0; width: 3px; height: 100px; border-radius: 99px 99px 0 0; background: linear-gradient(#7954d8, #a77ee9); }
+.reality-stage { position: absolute; z-index: 4; top: 273px; }
+.reality-stage i { display: block; width: 9px; height: 9px; margin-bottom: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 16px currentColor; }
 .reality-stage span, .reality-stage strong { display: block; }
-.reality-stage span { margin-bottom: 5px; color: currentColor; font-family: var(--font-mono); font-size: 7px; }
-.reality-stage strong { color: #e9e5de; font-family: var(--font-display); font-size: 19px; font-weight: 500; line-height: 1; }
-.reality-stage.usage { right: 2%; color: #58ae4d; transition-delay: 80ms; }
-.reality-stage.learning { right: 25%; color: #ec3f95; transition-delay: 150ms; }
-.reality-stage.changes { left: 52%; max-width: 170px; color: #a77ee9; transition-delay: 220ms; }
+.reality-stage span { margin-bottom: 4px; color: currentColor; font-family: var(--font-mono); font-size: 7px; }
+.reality-stage strong { color: #e9e5de; font-family: var(--font-display); font-size: 16px; font-weight: 500; line-height: 1.08; }
+.reality-stage.usage { right: 4%; width: 110px; color: #58ae4d; text-align: right; transition-delay: 80ms; }
+.reality-stage.usage i { margin-left: auto; transform: translateX(50%); }
+.reality-stage.learning { left: 75%; width: 130px; color: #ec3f95; text-align: center; transform: translateX(-50%); transition-delay: 150ms; }
+.reality-stage.learning i { margin-right: auto; margin-left: auto; }
+.reality-stage.changes { left: 54%; width: 180px; color: #a77ee9; transition-delay: 220ms; }
+.reality-stage.changes i { transform: translateX(-50%); }
 .lifecycle-real .imagined-finish { opacity: 0; transform: translateY(18px); }
-.lifecycle-real .linear-track { right: 3.7%; }
-.lifecycle-real .reality-loop, .lifecycle-real .reality-stage { opacity: 1; transform: translateY(0); }
-.lifecycle-real .travel-light { animation: realTravel 4.2s ease-in-out infinite; }
+.lifecycle-real .reality-loop, .lifecycle-real .reality-stage { opacity: 1; }
+.lifecycle-real .pulse-main { animation: loopPulseMain 6.4s linear infinite; }
+.lifecycle-real .pulse-down { animation: loopPulseDown 6.4s linear infinite; }
+.lifecycle-real .pulse-back { animation: loopPulseBack 6.4s linear infinite; }
+.lifecycle-real .pulse-return { animation: loopPulseReturn 6.4s linear infinite; }
 .lifecycle-real .path-stage.requirements, .lifecycle-real .path-stage.design { opacity: .48; }
 .lifecycle-conclusion { position: absolute; right: clamp(40px, 4vw, 68px); bottom: 40px; left: clamp(40px, 4vw, 68px); margin: 0; color: #f7f3eb; font-size: 15px; font-weight: 650; }
 .lifecycle-conclusion::before { display: inline-block; width: 38px; height: 2px; margin: 0 14px 4px 0; content: ''; background: linear-gradient(90deg, #00b8c8, #ec3f95, #f4c735); }
-@keyframes imaginedTravel { 0% { left: 4%; opacity: 0; background: #00b8c8; } 8% { opacity: 1; } 78% { left: calc(95% - 12px); opacity: 1; background: #f4c735; box-shadow: 0 0 18px 5px rgba(244,199,53,.5); } 100% { left: calc(95% - 12px); opacity: 0; } }
-@keyframes realTravel { 0% { left: 4%; opacity: 0; } 8% { opacity: 1; } 62% { left: calc(95% - 12px); opacity: 1; background: #f4c735; } 82% { left: 66%; top: 280px; background: #ec3f95; } 100% { left: 53%; top: 172px; opacity: 0; background: #a77ee9; } }
+@keyframes linearPulse { 0% { left: calc(4% - 6px); opacity: 0; } 8% { opacity: 1; } 82% { left: calc(96% - 6px); opacity: 1; background: #f4c735; box-shadow: 0 0 18px 5px rgba(244,199,53,.5); } 100% { left: calc(96% - 6px); opacity: 0; } }
+@keyframes loopPulseMain { 0% { left: calc(4% - 6px); opacity: 0; } 3% { opacity: 1; } 38% { left: calc(96% - 6px); opacity: 1; background: #f4c735; } 40%, 100% { left: calc(96% - 6px); opacity: 0; } }
+@keyframes loopPulseDown { 0%, 38% { top: 171px; opacity: 0; } 40% { opacity: 1; } 55% { top: 271px; opacity: 1; background: #58ae4d; } 57%, 100% { top: 271px; opacity: 0; } }
+@keyframes loopPulseBack { 0%, 55% { left: calc(96% - 6px); opacity: 0; } 57% { opacity: 1; } 82% { left: calc(54% - 6px); opacity: 1; background: #a77ee9; } 84%, 100% { left: calc(54% - 6px); opacity: 0; } }
+@keyframes loopPulseReturn { 0%, 82% { top: 271px; opacity: 0; } 84% { opacity: 1; } 97% { top: 171px; opacity: 1; } 100% { top: 171px; opacity: 0; } }
 
 .problems-heading h2 { max-width: 860px; font-size: clamp(42px, 4.4vw, 62px); }
 .problems-heading > p { max-width: 320px; margin: 26px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
@@ -617,23 +631,25 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .linear-track { top: 80px; right: auto; bottom: 72px; left: 18px; width: 3px; height: auto; background: linear-gradient(#00b8c8, #1469bd 26%, #7954d8 53%, #ec3f95 77%, #f4c735); }
   .linear-track::before { top: 0; left: -4px; }
   .linear-track::after { top: auto; right: auto; bottom: 0; left: -4px; }
-  .travel-light { top: 80px; left: 14px; animation: imaginedTravelMobile 3.6s ease-in-out infinite; }
+  .path-pulse { display: none; }
   .path-stage { top: auto; right: auto; left: 48px !important; width: auto; }
   .path-stage::after { top: 5px; bottom: auto; left: -35px; }
   .path-stage.requirements { top: 65px; }
   .path-stage.design { top: 180px; }
   .path-stage.build { top: 295px; }
-  .path-stage.first-release { top: 410px; }
+  .path-stage.first-release { top: 410px; text-align: left; }
+  .path-stage.first-release::after { right: auto; left: -35px; }
   .imagined-finish { right: 0; bottom: 12px; font-size: 76px; }
   .reality-loop { top: 442px; right: 6%; left: 18px; height: 142px; }
-  .loop-bottom { bottom: 24px; }
-  .loop-up { bottom: 24px; height: 38px; }
-  .reality-stage { bottom: 0; }
-  .reality-stage.usage { right: 0; }
-  .reality-stage.learning { right: 34%; }
-  .reality-stage.changes { bottom: 104px; left: 48px; }
+  .loop-down { top: 0; height: 100px; }
+  .loop-bottom { top: 100px; bottom: auto; }
+  .loop-up { top: 0; bottom: auto; height: 100px; }
+  .reality-stage { top: 542px; bottom: auto; }
+  .reality-stage.usage { right: 0; width: 86px; }
+  .reality-stage.learning { left: 62%; width: 100px; }
+  .reality-stage.changes { left: 18px; width: 118px; }
+  .reality-stage strong { font-size: 13px; }
   .lifecycle-real .linear-track { right: auto; }
-  .lifecycle-real .travel-light { animation: realTravelMobile 4.2s ease-in-out infinite; }
   .lifecycle-conclusion { position: static; margin-top: 8px; }
   .problem-grid { grid-template-columns: 1fr; }
   .problem-grid article:nth-child(n) { grid-column: auto; min-height: 0; }
@@ -664,9 +680,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 
 @media (prefers-reduced-motion: reduce) {
   .slide-forward-enter-active, .slide-forward-leave-active, .slide-back-enter-active, .slide-back-leave-active { transition: none; }
-  .travel-light, .connection-rail i, .flow-wire i, .server-module { animation: none; }
+  .path-pulse, .connection-rail i, .flow-wire i, .server-module { animation: none; }
 }
-
-@keyframes imaginedTravelMobile { 0% { top: 80px; opacity: 0; background: #00b8c8; } 8% { opacity: 1; } 78% { top: calc(100% - 84px); opacity: 1; background: #f4c735; } 100% { top: calc(100% - 84px); opacity: 0; } }
-@keyframes realTravelMobile { 0% { top: 80px; left: 14px; opacity: 0; } 8% { opacity: 1; } 62% { top: 430px; left: 14px; opacity: 1; background: #f4c735; } 82% { top: 516px; left: 66%; background: #ec3f95; } 100% { top: 474px; left: 14px; opacity: 0; background: #a77ee9; } }
 </style>
