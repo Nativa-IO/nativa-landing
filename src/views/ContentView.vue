@@ -26,7 +26,7 @@
           </div>
         </router-link>
 
-        <article class="deck-card deck-card-model">
+        <router-link to="/content/business-model" class="deck-card deck-card-model">
           <div class="slide-preview slide-model" aria-hidden="true">
             <div class="model-cover-copy">
               <span>Nativa</span>
@@ -53,9 +53,9 @@
               <h2>Business model</h2>
               <p>{{ copy.modelBody }}</p>
             </div>
-            <span class="status">{{ copy.status }}</span>
+            <span class="status status-ready">{{ copy.open }}</span>
           </div>
-        </article>
+        </router-link>
       </div>
     </section>
 
@@ -83,10 +83,9 @@ const content = {
     ideaTitle: 'La idea de Nativa',
     ideaBody: 'El problema, la visión y la forma en que Nativa reúne a todas las personas que participan en construir software.',
     modelBody: 'La oportunidad, los clientes, la propuesta de valor y las decisiones que sostienen el crecimiento de Nativa.',
-    status: 'En preparación',
     open: 'Abrir deck →',
     nextLabel: 'Siguiente paso',
-    nextBody: 'La presentación de visión ya se puede recorrer. El siguiente recuadro será el business model y, después, cada deck podrá descargarse o compartirse desde aquí.',
+    nextBody: 'Las presentaciones de visión y business model ya se pueden recorrer. El siguiente paso es conectar las cifras reales y preparar versiones descargables para compartir.',
   },
   en: {
     title: 'The ideas behind Nativa, told as presentations.',
@@ -96,10 +95,9 @@ const content = {
     ideaTitle: 'The idea behind Nativa',
     ideaBody: 'The problem, the vision, and how Nativa brings together everyone involved in building software.',
     modelBody: 'The opportunity, customers, value proposition, and decisions that support Nativa’s growth.',
-    status: 'In progress',
     open: 'Open deck →',
     nextLabel: 'Next step',
-    nextBody: 'The vision presentation is ready to explore. The business model comes next, and each deck will later be available to download or share from here.',
+    nextBody: 'The vision and business model presentations are ready to explore. Next, we will connect the actual figures and prepare downloadable versions to share.',
   },
 }
 
@@ -138,7 +136,7 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`
 .decks-section { padding: 20px 0 130px; }
 .decks-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .deck-card { overflow: hidden; border: 1px solid rgba(17,17,15,.13); border-radius: 24px; background: rgba(250,249,245,.76); color: inherit; text-decoration: none; box-shadow: 0 24px 70px -52px rgba(17,17,15,.5); transition: transform 180ms ease, box-shadow 180ms ease; }
-.deck-card-idea:hover { transform: translateY(-4px); box-shadow: 0 34px 80px -48px rgba(17,17,15,.55); }
+.deck-card:hover { transform: translateY(-4px); box-shadow: 0 34px 80px -48px rgba(17,17,15,.55); }
 .slide-preview { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid rgba(17,17,15,.12); background: #f6f0e4; }
 .slide-idea img { display: block; width: 100%; height: 100%; object-fit: cover; }
 

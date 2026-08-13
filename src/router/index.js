@@ -19,6 +19,12 @@ const routes = [
     component: () => import('../views/VisionDeckView.vue'),
     meta: { title: 'La visión de Nativa' },
   },
+  {
+    path: '/content/business-model',
+    name: 'business-model-deck',
+    component: () => import('../views/BusinessModelDeckView.vue'),
+    meta: { title: 'Business model | Nativa' },
+  },
 ]
 
 const router = createRouter({
