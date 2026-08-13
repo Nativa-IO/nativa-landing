@@ -137,10 +137,34 @@
             <p class="slide-thesis">Nativa no inventa problemas nuevos. Hace que las prácticas que siempre importaron puedan sobrevivir a esta nueva velocidad.</p>
           </template>
 
+          <template v-else-if="currentSlide === 5">
+            <div class="benefits-layout">
+              <div class="benefits-copy">
+                <div class="slide-kicker">06 · La promesa de Nativa</div>
+                <h2>Más velocidad,<br>sin perder control.</h2>
+                <p>Nativa convierte cambios aislados en un producto que todo el equipo puede entender, probar y hacer crecer.</p>
+              </div>
+
+              <div class="benefits-orbit" aria-label="Cinco beneficios de Nativa">
+                <div class="benefit-center" aria-hidden="true">
+                  <img :src="asset('brand/nativa-mark.svg')" alt="">
+                  <strong>Nativa</strong>
+                  <span>un solo sistema</span>
+                </div>
+                <article v-for="benefit in benefits" :key="benefit.number" class="benefit-item">
+                  <span>{{ benefit.number }}</span>
+                  <h3>{{ benefit.title }}</h3>
+                  <p>{{ benefit.body }}</p>
+                </article>
+              </div>
+            </div>
+            <p class="slide-thesis">Nativa no reemplaza las prácticas que hacen confiable al software. Las vuelve accesibles para todos los que ahora pueden construirlo.</p>
+          </template>
+
           <template v-else>
             <div class="slide-heading-row architecture-heading">
               <div>
-                <div class="slide-kicker">06 · Cómo funciona</div>
+                <div class="slide-kicker">07 · Cómo funciona</div>
                 <h2>La misma experiencia. La red que tú elijas.</h2>
               </div>
               <div class="segmented-control infra-control" role="group" aria-label="Elegir dónde vive la infraestructura">
@@ -193,7 +217,7 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
-const slides = Array.from({ length: 6 })
+const slides = Array.from({ length: 7 })
 const currentSlide = ref(0)
 const lifecycleMode = ref('linear')
 const infraMode = ref('cloud')
@@ -206,6 +230,14 @@ const problems = [
   { number: '03', title: 'Aislamiento', body: 'Ahora también hay que decidir qué información pueden ver los modelos y cuál debe permanecer fuera de su alcance.' },
   { number: '04', title: 'Infraestructura', body: 'El código necesita lugares para correr, probarse, evolucionar y llegar a usuarios reales.' },
   { number: '05', title: 'Colaboración', body: 'Personas distintas necesitan compartir contexto, revisar decisiones y trabajar sin bloquearse.' },
+]
+
+const benefits = [
+  { number: '01', title: 'Construir juntos', body: 'Clientes, expertos y equipo trabajan sobre el mismo producto.' },
+  { number: '02', title: 'Cambiar sin miedo', body: 'Cada propuesta vive aislada hasta ser revisada y aprobada.' },
+  { number: '03', title: 'Conservar contexto', body: 'Decisiones, documentos y aprendizajes permanecen con el proyecto.' },
+  { number: '04', title: 'Proteger lo sensible', body: 'Datos, permisos y secretos se mantienen bajo tus políticas.' },
+  { number: '05', title: 'Llegar a producción', body: 'Validación, historia y publicación forman un solo flujo.' },
 ]
 
 const slideNumber = computed(() => String(currentSlide.value + 1).padStart(2, '0'))
@@ -373,6 +405,36 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .amplifier i { width: 1px; height: 30px; background: rgba(255,255,255,.16); }
 .slide-5 .slide-thesis { border-color: rgba(255,255,255,.13); }
 
+.slide-6 { border-color: rgba(255,255,255,.1); background: radial-gradient(circle at 78% 48%, rgba(0,184,200,.14), transparent 27%), radial-gradient(circle at 48% 5%, rgba(236,63,149,.12), transparent 28%), radial-gradient(circle at 8% 92%, rgba(244,199,53,.1), transparent 24%), #17131f; color: #f8f5ee; }
+.slide-6 .slide-kicker { color: #c8b6ff; }
+.slide-6 .slide-thesis { border-color: rgba(255,255,255,.14); }
+.benefits-layout { display: grid; min-height: 510px; grid-template-columns: .72fr 1.28fr; gap: clamp(30px, 4vw, 72px); align-items: center; }
+.benefits-copy h2 { max-width: 520px; margin: 28px 0 24px; font-size: clamp(52px, 5.2vw, 76px); }
+.benefits-copy > p { max-width: 440px; margin: 0; color: #b7b0bf; font-size: 15px; line-height: 1.7; }
+.benefits-orbit { position: relative; min-height: 510px; }
+.benefits-orbit::before, .benefits-orbit::after { position: absolute; top: 50%; left: 50%; content: ''; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; transform: translate(-50%, -50%); }
+.benefits-orbit::before { width: 330px; height: 330px; }
+.benefits-orbit::after { width: 455px; height: 455px; border-color: rgba(200,182,255,.08); }
+.benefit-center { position: absolute; z-index: 3; top: 50%; left: 50%; display: grid; width: 154px; height: 154px; place-items: center; align-content: center; border-radius: 50%; background: #f7f3e9; color: #151217; box-shadow: 0 0 0 12px rgba(121,84,216,.12), 0 28px 70px -24px rgba(0,0,0,.7); transform: translate(-50%, -50%); }
+.benefit-center img { width: 54px; height: 54px; object-fit: contain; }
+.benefit-center strong, .benefit-center span { display: block; }
+.benefit-center strong { margin-top: 8px; font-family: var(--font-display); font-size: 20px; line-height: 1; }
+.benefit-center span { margin-top: 5px; color: #777078; font-family: var(--font-mono); font-size: 7px; letter-spacing: .12em; text-transform: uppercase; }
+.benefit-item { position: absolute; z-index: 4; width: 180px; }
+.benefit-item > span { color: #f4c735; font-family: var(--font-mono); font-size: 8px; letter-spacing: .12em; }
+.benefit-item h3 { margin: 8px 0 7px; font-family: var(--font-display); font-size: 23px; font-weight: 500; letter-spacing: -.025em; line-height: 1; }
+.benefit-item p { margin: 0; color: #aaa3b1; font-size: 10px; line-height: 1.5; }
+.benefit-item:nth-child(2) { top: 3%; left: 4%; }
+.benefit-item:nth-child(3) { top: 5%; right: 0; }
+.benefit-item:nth-child(4) { top: 44%; right: -2%; }
+.benefit-item:nth-child(5) { right: 10%; bottom: 0; }
+.benefit-item:nth-child(6) { bottom: 2%; left: 0; }
+.benefit-item:nth-child(2) > span { color: #00b8c8; }
+.benefit-item:nth-child(3) > span { color: #ec3f95; }
+.benefit-item:nth-child(4) > span { color: #ff7a34; }
+.benefit-item:nth-child(5) > span { color: #58ae4d; }
+.benefit-item:nth-child(6) > span { color: #bba4ff; }
+
 .architecture-heading h2 { max-width: 760px; font-size: clamp(44px, 4.5vw, 64px); }
 .infra-control { margin-top: 6px; }
 .architecture-layout { display: grid; margin-top: 30px; grid-template-columns: .92fr 88px 1.08fr; gap: 20px; align-items: center; }
@@ -416,6 +478,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 @media (max-width: 1000px) {
   .slide-stage { aspect-ratio: auto; min-height: 760px; }
   .waterfall-opening, .cheap-code-grid { gap: 36px; }
+  .benefits-layout { gap: 24px; grid-template-columns: .66fr 1.34fr; }
+  .benefit-item { width: 155px; }
   .architecture-layout { grid-template-columns: .85fr 42px 1.15fr; gap: 12px; }
   .connection span { display: none; }
 }
@@ -429,7 +493,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .slide-stage h1 { font-size: 54px; }
   .slide-stage h2 { font-size: 46px; }
   .slide-thesis { position: static; margin-top: 38px; }
-  .waterfall-opening, .cheap-code-grid, .not-new-grid, .architecture-layout { grid-template-columns: 1fr; }
+  .waterfall-opening, .cheap-code-grid, .not-new-grid, .benefits-layout, .architecture-layout { grid-template-columns: 1fr; }
   .waterfall-opening { min-height: 0; }
   .waterfall-visual { height: 510px; margin-top: 10px; }
   .cheap-code-grid blockquote { margin-top: 8px; }
@@ -444,6 +508,12 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .problem-grid { grid-template-columns: 1fr; }
   .problem-grid article:nth-child(n) { grid-column: auto; min-height: 0; }
   .amplifier { transform: rotate(90deg); }
+  .benefits-orbit { display: grid; min-height: 0; margin-top: 24px; grid-template-columns: 1fr 1fr; gap: 24px 18px; }
+  .benefits-orbit::before, .benefits-orbit::after { display: none; }
+  .benefit-center { position: relative; top: auto; left: auto; width: 132px; height: 132px; grid-column: 1 / -1; justify-self: center; transform: none; }
+  .benefit-item:nth-child(n) { position: static; width: auto; }
+  .benefit-item h3 { font-size: 21px; }
+  .benefit-item p { font-size: 11px; }
   .connection { justify-content: center; transform: rotate(90deg); }
   .network-boundary { min-height: 390px; }
   .architecture-caption { margin-top: 30px; }
