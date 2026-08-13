@@ -65,34 +65,46 @@
           </template>
 
           <template v-else-if="currentSlide === 2">
-            <div class="slide-heading-row">
+            <div class="slide-heading-row lifecycle-heading">
               <div>
                 <div class="slide-kicker">03 · El ciclo real</div>
-                <h2>El software nunca está terminado.</h2>
+                <h2>La primera versión no es la versión final.</h2>
               </div>
-              <div class="segmented-control" role="group" aria-label="Comparar el ciclo de software">
-                <button :class="{ active: lifecycleMode === 'linear' }" @click="lifecycleMode = 'linear'">Como se imagina</button>
+              <div class="lifecycle-switch" role="group" aria-label="Comparar el ciclo de software">
+                <button :class="{ active: lifecycleMode === 'linear' }" @click="lifecycleMode = 'linear'">Como lo imaginamos</button>
                 <button :class="{ active: lifecycleMode === 'real' }" @click="lifecycleMode = 'real'">Como ocurre</button>
               </div>
             </div>
 
-            <div class="lifecycle-canvas" :class="`lifecycle-${lifecycleMode}`">
-              <p class="lifecycle-story">{{ lifecycleMode === 'linear' ? 'Una idea avanza hasta convertirse en una primera versión.' : 'Cada versión descubre nuevas necesidades y vuelve a entrar al ciclo.' }}</p>
-              <div class="life-node requirements"><span>01</span><strong>Requerimientos</strong><small>Qué necesitamos</small></div>
-              <i class="life-arrow arrow-one">→</i>
-              <div class="life-node design"><span>02</span><strong>Diseño</strong><small>Cómo funcionará</small></div>
-              <i class="life-arrow arrow-two">→</i>
-              <div class="life-node build"><span>03</span><strong>Construcción</strong><small>Convertirlo en código</small></div>
-              <i class="life-arrow arrow-three">→</i>
-              <div class="life-node maintain" :class="{ 'first-version': lifecycleMode === 'linear' }">
-                <span>04</span>
-                <strong>{{ lifecycleMode === 'linear' ? 'Primera versión' : 'Mantenimiento' }}</strong>
-                <small>{{ lifecycleMode === 'linear' ? 'Parece el final' : 'Nuevas necesidades' }}</small>
+            <div class="lifecycle-path" :class="`lifecycle-${lifecycleMode}`">
+              <p class="lifecycle-story">{{ lifecycleMode === 'linear' ? 'La historia que parece terminar al entregar.' : 'Lo que sucede cuando el software conoce a sus usuarios.' }}</p>
+
+              <div class="linear-track" aria-hidden="true"><i /></div>
+              <div class="travel-light" aria-hidden="true" />
+
+              <div class="path-stage requirements">
+                <span>01</span><strong>Requerimientos</strong><small>Definir</small>
               </div>
-              <div v-if="lifecycleMode === 'real'" class="loop-line"><span>Feedback · cambios · aprendizaje</span></div>
-              <div v-else class="finish-line"><span>La idea imaginada</span><strong>✓ Listo</strong></div>
+              <div class="path-stage design">
+                <span>02</span><strong>Diseño</strong><small>Decidir</small>
+              </div>
+              <div class="path-stage build">
+                <span>03</span><strong>Construcción</strong><small>Crear</small>
+              </div>
+              <div class="path-stage first-release">
+                <span>04</span><strong>Primera versión</strong><small>Entregar</small>
+              </div>
+
+              <div class="imagined-finish" aria-hidden="true">FIN<span>?</span></div>
+
+              <div class="reality-loop" aria-hidden="true">
+                <i class="loop-down" /><i class="loop-bottom" /><i class="loop-up" />
+              </div>
+              <div class="reality-stage usage"><i /><span>05</span><strong>Uso real</strong></div>
+              <div class="reality-stage learning"><i /><span>06</span><strong>Aprendizaje</strong></div>
+              <div class="reality-stage changes"><i /><span>07</span><strong>Mantenimiento y cambios</strong></div>
             </div>
-            <p class="slide-thesis">La versión 1 no es la versión final. Construcción y mantenimiento forman un loop que nunca deja de evolucionar.</p>
+            <p class="lifecycle-conclusion">{{ lifecycleMode === 'linear' ? 'La versión 1 parece una llegada.' : 'La versión 1 es el primer encuentro con la realidad.' }}</p>
           </template>
 
           <template v-else-if="currentSlide === 3">
@@ -384,29 +396,56 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 .segmented-control { display: inline-flex; flex: 0 0 auto; padding: 4px; border: 1px solid rgba(17,17,15,.13); border-radius: 999px; background: #ebe7de; }
 .segmented-control button { min-height: 38px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; color: #706d65; cursor: pointer; font: inherit; font-size: 11px; font-weight: 650; }
 .segmented-control button.active { background: #11110f; color: white; box-shadow: 0 5px 16px -10px rgba(17,17,15,.7); }
-.lifecycle-canvas { position: relative; display: grid; margin-top: 38px; padding: 68px 30px 94px; overflow: hidden; border: 1px solid rgba(17,17,15,.12); border-radius: 26px; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 14px; align-items: center; background: #fff; box-shadow: 0 28px 70px -58px rgba(17,17,15,.52); }
-.lifecycle-canvas::before { position: absolute; z-index: 0; top: 53%; right: 7%; left: 7%; height: 2px; content: ''; background: linear-gradient(90deg, #e8c56f, #df8db7, #9b7ce5, #69b8b7); opacity: .52; }
-.lifecycle-story { position: absolute; top: 20px; left: 30px; margin: 0; color: var(--muted); font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
-.life-node { position: relative; z-index: 2; min-height: 158px; padding: 20px; border: 1px solid rgba(17,17,15,.1); border-radius: 20px; background: #f6eedf; box-shadow: 0 18px 40px -34px rgba(17,17,15,.45); transition: transform 360ms ease, background-color 360ms ease, color 360ms ease, box-shadow 360ms ease; }
-.life-node.design { background: #f4e1eb; }
-.life-node.build { background: #e9e1fa; }
-.life-node.maintain { background: #dcefee; }
-.life-node span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: rgba(255,255,255,.72); color: var(--purple); font-family: var(--font-mono); font-size: 8px; }
-.life-node strong, .life-node small { display: block; }
-.life-node strong { margin-top: 25px; font-family: var(--font-display); font-size: 24px; font-weight: 500; line-height: .98; }
-.life-node small { margin-top: 6px; color: var(--muted); font-size: 11px; }
-.life-arrow { position: relative; z-index: 3; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(17,17,15,.1); border-radius: 50%; background: white; color: #6f46d9; font-style: normal; box-shadow: 0 8px 20px -16px rgba(17,17,15,.7); }
-.lifecycle-real .build, .lifecycle-real .maintain { transform: translateY(-8px); box-shadow: 0 25px 45px -32px rgba(86,55,157,.55); }
-.first-version { transform: scale(1.055); border-color: #11110f; background: #11110f !important; color: white; box-shadow: 0 24px 50px -32px rgba(17,17,15,.8); }
-.first-version span { background: rgba(255,255,255,.14); color: white; }
-.first-version small { color: rgba(255,255,255,.62); }
-.loop-line { position: absolute; z-index: 1; right: 30px; bottom: 22px; width: calc(50% - 44px); height: 54px; border-right: 2px solid #7954d8; border-bottom: 2px solid #7954d8; border-left: 2px solid #7954d8; border-radius: 0 0 24px 24px; animation: loopGlow 1.8s ease-in-out infinite; }
-.loop-line::before { position: absolute; top: -17px; left: -7px; content: '↑'; color: #7954d8; font-weight: 800; }
-.loop-line span { position: absolute; right: 18px; bottom: 12px; color: #6b48c5; font-family: var(--font-mono); font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
-.finish-line { position: absolute; z-index: 3; right: 30px; bottom: 24px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid #9ac9a7; border-radius: 999px; background: #e1f1e5; }
-.finish-line span { color: #4f6655; font-size: 9px; }
-.finish-line strong { color: #176b39; font-size: 11px; }
-@keyframes loopGlow { 50% { border-color: #ec3f95; } }
+.slide-3 { border-color: rgba(255,255,255,.08); background: radial-gradient(circle at 18% 84%, rgba(0,184,200,.13), transparent 30%), radial-gradient(circle at 88% 22%, rgba(236,63,149,.12), transparent 28%), #111114; color: #f7f3eb; }
+.slide-3 .slide-kicker { color: #bba4ff; }
+.lifecycle-heading h2 { max-width: 870px; font-size: clamp(48px, 4.7vw, 68px); }
+.lifecycle-switch { display: flex; flex: 0 0 auto; gap: 24px; margin-top: 8px; }
+.lifecycle-switch button { position: relative; padding: 0 0 9px; border: 0; background: transparent; color: #77747b; cursor: pointer; font: inherit; font-family: var(--font-mono); font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.lifecycle-switch button::after { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; content: ''; background: linear-gradient(90deg, #00b8c8, #7954d8, #ec3f95); transform: scaleX(0); transition: transform 260ms ease; }
+.lifecycle-switch button.active { color: #f7f3eb; }
+.lifecycle-switch button.active::after { transform: scaleX(1); }
+.lifecycle-path { position: relative; height: 350px; margin-top: 16px; }
+.lifecycle-story { position: absolute; z-index: 5; top: 20px; left: 0; margin: 0; color: #77747b; font-family: var(--font-mono); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+.linear-track { position: absolute; z-index: 1; top: 176px; right: 5%; left: 4%; height: 3px; overflow: visible; border-radius: 99px; background: linear-gradient(90deg, #00b8c8, #1469bd 26%, #7954d8 53%, #ec3f95 77%, #f4c735); box-shadow: 0 0 18px rgba(121,84,216,.34); transition: right 520ms ease; }
+.linear-track::before, .linear-track::after { position: absolute; top: -4px; width: 11px; height: 11px; content: ''; border-radius: 50%; background: currentColor; box-shadow: 0 0 16px currentColor; }
+.linear-track::before { left: 0; color: #00b8c8; }
+.linear-track::after { right: 0; color: #f4c735; }
+.travel-light { position: absolute; z-index: 4; top: 172px; left: 4%; width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; background: #00b8c8; box-shadow: 0 0 18px 5px rgba(0,184,200,.55); animation: imaginedTravel 3.6s ease-in-out infinite; }
+.path-stage { position: absolute; z-index: 4; top: 109px; width: 200px; }
+.path-stage::after { position: absolute; bottom: -29px; left: 0; width: 10px; height: 10px; content: ''; border: 2px solid #111114; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px rgba(255,255,255,.04), 0 0 15px currentColor; }
+.path-stage span, .path-stage strong, .path-stage small { display: block; }
+.path-stage span { margin-bottom: 10px; color: currentColor; font-family: var(--font-mono); font-size: 8px; letter-spacing: .1em; }
+.path-stage strong { color: #f7f3eb; font-family: var(--font-display); font-size: clamp(23px, 2.1vw, 31px); font-weight: 500; letter-spacing: -.025em; line-height: .95; }
+.path-stage small { margin-top: 7px; color: #77747b; font-size: 9px; }
+.path-stage.requirements { left: 4%; color: #00b8c8; }
+.path-stage.design { left: 29%; color: #397dd1; }
+.path-stage.build { left: 54%; color: #a77ee9; }
+.path-stage.first-release { right: 0; color: #f4c735; }
+.imagined-finish { position: absolute; z-index: 3; right: 0; bottom: 25px; color: rgba(247,243,235,.07); font-family: var(--font-display); font-size: 98px; font-weight: 700; letter-spacing: -.06em; transition: opacity 280ms ease, transform 400ms ease; }
+.imagined-finish span { color: rgba(244,199,53,.24); }
+.reality-loop, .reality-stage { opacity: 0; pointer-events: none; transition: opacity 320ms ease, transform 460ms ease; }
+.reality-loop { position: absolute; z-index: 1; top: 176px; right: 3.7%; left: 53%; height: 148px; transform: translateY(-10px); }
+.reality-loop i { position: absolute; display: block; }
+.loop-down { top: 0; right: 0; width: 3px; height: 104px; border-radius: 0 0 99px 99px; background: linear-gradient(#f4c735, #58ae4d); }
+.loop-bottom { right: 0; bottom: 40px; width: 100%; height: 3px; border-radius: 99px; background: linear-gradient(90deg, #7954d8, #ec3f95, #58ae4d); }
+.loop-up { bottom: 40px; left: 0; width: 3px; height: 44px; border-radius: 99px 99px 0 0; background: linear-gradient(#7954d8, #a77ee9); }
+.reality-stage { position: absolute; z-index: 4; bottom: 2px; transform: translateY(12px); }
+.reality-stage i { display: block; width: 9px; height: 9px; margin-bottom: 9px; border-radius: 50%; background: currentColor; box-shadow: 0 0 16px currentColor; }
+.reality-stage span, .reality-stage strong { display: block; }
+.reality-stage span { margin-bottom: 5px; color: currentColor; font-family: var(--font-mono); font-size: 7px; }
+.reality-stage strong { color: #e9e5de; font-family: var(--font-display); font-size: 19px; font-weight: 500; line-height: 1; }
+.reality-stage.usage { right: 2%; color: #58ae4d; transition-delay: 80ms; }
+.reality-stage.learning { right: 25%; color: #ec3f95; transition-delay: 150ms; }
+.reality-stage.changes { left: 52%; max-width: 170px; color: #a77ee9; transition-delay: 220ms; }
+.lifecycle-real .imagined-finish { opacity: 0; transform: translateY(18px); }
+.lifecycle-real .linear-track { right: 3.7%; }
+.lifecycle-real .reality-loop, .lifecycle-real .reality-stage { opacity: 1; transform: translateY(0); }
+.lifecycle-real .travel-light { animation: realTravel 4.2s ease-in-out infinite; }
+.lifecycle-real .path-stage.requirements, .lifecycle-real .path-stage.design { opacity: .48; }
+.lifecycle-conclusion { position: absolute; right: clamp(40px, 4vw, 68px); bottom: 40px; left: clamp(40px, 4vw, 68px); margin: 0; color: #f7f3eb; font-size: 15px; font-weight: 650; }
+.lifecycle-conclusion::before { display: inline-block; width: 38px; height: 2px; margin: 0 14px 4px 0; content: ''; background: linear-gradient(90deg, #00b8c8, #ec3f95, #f4c735); }
+@keyframes imaginedTravel { 0% { left: 4%; opacity: 0; background: #00b8c8; } 8% { opacity: 1; } 78% { left: calc(95% - 12px); opacity: 1; background: #f4c735; box-shadow: 0 0 18px 5px rgba(244,199,53,.5); } 100% { left: calc(95% - 12px); opacity: 0; } }
+@keyframes realTravel { 0% { left: 4%; opacity: 0; } 8% { opacity: 1; } 62% { left: calc(95% - 12px); opacity: 1; background: #f4c735; } 82% { left: 66%; top: 280px; background: #ec3f95; } 100% { left: 53%; top: 172px; opacity: 0; background: #a77ee9; } }
 
 .problems-heading h2 { max-width: 860px; font-size: clamp(42px, 4.4vw, 62px); }
 .problems-heading > p { max-width: 320px; margin: 26px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
@@ -571,10 +610,29 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
   .slide-heading-row { flex-direction: column; }
   .segmented-control { align-self: stretch; }
   .segmented-control button { flex: 1; }
-  .lifecycle-canvas { margin-top: 44px; grid-template-columns: 1fr; }
-  .life-arrow { transform: rotate(90deg); text-align: center; }
-  .loop-line, .finish-line { position: static; width: 100%; margin-top: 10px; }
-  .loop-line { height: 54px; }
+  .lifecycle-switch { width: 100%; justify-content: space-between; }
+  .lifecycle-path { height: 600px; margin-top: 24px; }
+  .linear-track { top: 80px; right: auto; bottom: 72px; left: 18px; width: 3px; height: auto; background: linear-gradient(#00b8c8, #1469bd 26%, #7954d8 53%, #ec3f95 77%, #f4c735); }
+  .linear-track::before { top: 0; left: -4px; }
+  .linear-track::after { top: auto; right: auto; bottom: 0; left: -4px; }
+  .travel-light { top: 80px; left: 14px; animation: imaginedTravelMobile 3.6s ease-in-out infinite; }
+  .path-stage { top: auto; right: auto; left: 48px !important; width: auto; }
+  .path-stage::after { top: 5px; bottom: auto; left: -35px; }
+  .path-stage.requirements { top: 65px; }
+  .path-stage.design { top: 180px; }
+  .path-stage.build { top: 295px; }
+  .path-stage.first-release { top: 410px; }
+  .imagined-finish { right: 0; bottom: 12px; font-size: 76px; }
+  .reality-loop { top: 442px; right: 6%; left: 18px; height: 142px; }
+  .loop-bottom { bottom: 24px; }
+  .loop-up { bottom: 24px; height: 38px; }
+  .reality-stage { bottom: 0; }
+  .reality-stage.usage { right: 0; }
+  .reality-stage.learning { right: 34%; }
+  .reality-stage.changes { bottom: 104px; left: 48px; }
+  .lifecycle-real .linear-track { right: auto; }
+  .lifecycle-real .travel-light { animation: realTravelMobile 4.2s ease-in-out infinite; }
+  .lifecycle-conclusion { position: static; margin-top: 8px; }
   .problem-grid { grid-template-columns: 1fr; }
   .problem-grid article:nth-child(n) { grid-column: auto; min-height: 0; }
   .amplifier { transform: rotate(90deg); }
@@ -603,6 +661,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKey))
 
 @media (prefers-reduced-motion: reduce) {
   .slide-forward-enter-active, .slide-forward-leave-active, .slide-back-enter-active, .slide-back-leave-active { transition: none; }
-  .connection-rail i, .route i, .server-orb, .nativa-hub img, .loop-line { animation: none; }
+  .travel-light, .connection-rail i, .route i, .server-orb, .nativa-hub img { animation: none; }
 }
+
+@keyframes imaginedTravelMobile { 0% { top: 80px; opacity: 0; background: #00b8c8; } 8% { opacity: 1; } 78% { top: calc(100% - 84px); opacity: 1; background: #f4c735; } 100% { top: calc(100% - 84px); opacity: 0; } }
+@keyframes realTravelMobile { 0% { top: 80px; left: 14px; opacity: 0; } 8% { opacity: 1; } 62% { top: 430px; left: 14px; opacity: 1; background: #f4c735; } 82% { top: 516px; left: 66%; background: #ec3f95; } 100% { top: 474px; left: 14px; opacity: 0; background: #a77ee9; } }
 </style>
